@@ -1,9 +1,9 @@
 <?php
 include_once("../../configuracion.php");
 $tituloPagina = "Productos";
-include_once("../Estructuras/headInseguro.php");
-/* include_once("../Estructuras/banner.php"); */
-include_once("../Estructuras/navInseguro.php");
+include_once("../Estructuras/headSeguro.php");
+include_once("../Estructuras/banner.php");
+include_once("../Estructuras/navSeguro.php");
 ?>
 
 <!-- ________________________________________ INICIO CONTENIDO _________________________________ -->
@@ -26,9 +26,9 @@ include_once("../Estructuras/navInseguro.php");
             echo "<h5 class='card-title'>" . $listaProd[$i]->getProNombre() . "</h5>";
             echo "<p class='card-text'>Precio: $" . $listaProd[$i]->getProDetalle() . "</p>";
             echo "<p class='card-text'>Stock: " . $listaProd[$i]->getProCantstock() . "</p>";
-    
-            echo "<a href='login.php'  class='btn btn-primary'>Agregar al carrito</a>";
-           
+        
+            echo "<a href='agregarProductoAlCarrito.php?idproducto=".$listaProd[$i]->getIdProducto()."'  class='btn btn-primary' >Agregar al carrito</a></button>";
+
             echo "</div>";
             echo "</div>";
             echo "</div>";
@@ -37,7 +37,7 @@ include_once("../Estructuras/navInseguro.php");
         echo "</div>";
 
     } else {
-
+        
         echo '<div class="container mt-5 mb-5">';
         echo '<div class="row justify-content-center">';
         echo '<div class="col-md-6">';

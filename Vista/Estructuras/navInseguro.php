@@ -26,7 +26,7 @@ $direccionPadre = $session->getDireccionPadreMenu();
                 }
 
                 //DROPDOWN DE PRODUCTOS
-               /*  echo '<div class="ml-auto">';
+                echo '<div class="ml-auto">';
 
                 if ($direccionMenu == "productos.php"){
                     //Caso para página actual (current)
@@ -61,7 +61,7 @@ $direccionPadre = $session->getDireccionPadreMenu();
                     echo '</div>';
                     echo '</div>';
                     //FIN DROPDOWN DE PRODUCTOS
-                } */
+                }
 
                 /*----------------------------------- */
                 if ($direccionMenu == "crearCuenta.php") {
