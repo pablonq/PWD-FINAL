@@ -67,39 +67,39 @@ if ($rol != null){
 </div>
 <div class="tarjetas d-flex justify-content-between">
   
-    <div class="cards">
+    <a class="cards" href="productos.php?tipo=Construccion">
       <img src="../img/Construccion/cal.png" alt="cal">
       <div class="cards_titulos">
       Construccion
       </div>
-    </div>
-    <div class="cards">
+    </a>
+    <a class="cards" href="productos.php?tipo=Electricidad">
       <img src="../img/Electricidad/cables.png" alt="cables">
       <div class="cards_titulos">
       Electricidad
+      
       </div>
-    
-    </div>
-    <div class="cards">
+    </a>
+    <a class="cards" href="productos.php?tipo=Herramientas">
     <img src="../img/Herramientas/serrucho.png" alt="herramientas">
     <div class="cards_titulos">
       Herramientas
       </div>
-    </div>
-    <div class="cards">
+    </a>
+    <a class="cards" href="productos.php?tipo=Plomeria">
       <img src="../img/Plomeria/tuberias.jpg" alt="tuberia">
       <div class="cards_titulos">
         Plomeria
       </div>
-    </div>
-    <div class="cards">
+    </a>
+    
+    <a class="cards" href="productos.php?tipo=Tornillos">
       <img src="../img/Tornillos/tornillomadera.png" alt="tornillos">
       <div class="cards_titulos">
         Tornillos
       </div>
-    </div>
-
-</div>
+    </a>
+  </div>
 
 <?php
 include_once ('../Estructuras/footer.php');

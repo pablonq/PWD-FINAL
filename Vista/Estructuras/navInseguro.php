@@ -1,6 +1,7 @@
 <?php
 //$session = new Session();
 $direccionMenu = $session->getDireccionMenu();
+
 $direccionPadre = $session->getDireccionPadreMenu();
 ?>
 

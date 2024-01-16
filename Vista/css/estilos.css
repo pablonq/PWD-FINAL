@@ -89,6 +89,7 @@ border: 2px solid rgba(60, 57, 231, 0.62);
   margin-top: 50px;
   flex: 25%;
   flex-direction: column; /*Ordena el contenido en una columna*/
+  text-decoration: none;
 }
 
 .cards:hover {
