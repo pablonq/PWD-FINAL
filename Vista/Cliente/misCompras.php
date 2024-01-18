@@ -2,7 +2,7 @@
 include_once "../../configuracion.php";
 $tituloPagina = "Mis Compras";
 include_once("../Estructuras/headSeguro.php");
-include_once("../Estructuras/banner.php");
+/* include_once("../Estructuras/banner.php"); */
 include_once("../Estructuras/navSeguro.php");
 
 /**

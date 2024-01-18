@@ -8,6 +8,7 @@ include_once("../Estructuras/navInseguro.php");
 
 <!-- ________________________________________ INICIO CONTENIDO _________________________________ -->
 <div class="producto">
+  <div class="container_cards">
 
 
     <?php
@@ -21,16 +22,18 @@ include_once("../Estructuras/navInseguro.php");
         
         for ($i = 0; $i < count($listaProd); $i++) {
           echo "<div class='cards_producto'>";
-            echo "<div class='card_img'><img src='" . $listaProd[$i]->getImagenProducto() . "' alt='" . $listaProd[$i]->getProNombre() . "'></div>";
-            echo "<div class='card_info'>";
-            echo "<p class='text_title'>". $listaProd[$i]->getProNombre() ."</p>";
-            echo "<p class='text_body'> Stock:". $listaProd[$i]->getProCantstock() ."</p>";
-            echo"</div>";
-            echo "<div class='card_footer'>";
-            echo "<span class='text_title'> $". $listaProd[$i]->getProDetalle()."</span>";
-            echo "<div class='card_button'>";
-            echo "<a href='login.php' ><i class='svg_icon bi bi-cart-check-fill'></i></a>";
+            echo "<div class='cards_cuerpo'>";
+              echo "<div class='card_img'><img src='" . $listaProd[$i]->getImagenProducto() . "' alt='" . $listaProd[$i]->getProNombre() . "'></div>";
+              echo "<div class='card_info'>";
+                echo "<p class='text_title'>". $listaProd[$i]->getProNombre() ."</p>";
+                echo "<p class='text_body'> Stock: ". $listaProd[$i]->getProCantstock() ." uni</p>";
+              echo "</div>";
             echo "</div>";
+            echo "<div class='card_footer'>";
+              echo "<span class='text_title'> $". $listaProd[$i]->getProDetalle()."</span>";
+              echo "<div class='card_button'>";
+              echo "<a href='login.php' ><i class='svg_icon bi bi-cart-check-fill'></i></a>";
+              echo "</div>";
             echo "</div>";
             echo "</div>";
         }
@@ -50,7 +53,7 @@ include_once("../Estructuras/navInseguro.php");
     }
 
     ?>
-    
+    </div>
 </div>
 <!-- ________________________________________ FIN CONTENIDO ____________________________________ -->
 

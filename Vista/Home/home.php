@@ -77,8 +77,7 @@ if ($rol != null){
       <img src="../img/Electricidad/cables.png" alt="cables">
       <div class="cards_titulos">
       Electricidad
-      
-      </div>
+            </div>
     </a>
     <a class="cards" href="productos.php?tipo=Herramientas">
     <img src="../img/Herramientas/serrucho.png" alt="herramientas">
