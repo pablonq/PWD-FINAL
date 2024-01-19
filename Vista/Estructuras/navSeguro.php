@@ -1,10 +1,10 @@
 <?php
 //$session = new Session();
-$nombreUsuario = $session->getUsNombre();
-$rolActivo = $session->getIdRol();
-$idUsuario = $session->getIdUsuario();
-$colRoles = $session->getColRoles();
-$colMenu = $session->getColMenu();
+$nombreUsuario = $session->getUsNombre(); /*Cliente*/
+$rolActivo = $session->getIdRol(); /*3*/ 
+$idUsuario = $session->getIdUsuario();/*7*/
+$colRoles = $session->getColRoles();/*Cliente*/
+$colMenu = $session->getColMenu();/*[11,Inicio,home.php,../Home],[41,Productos,productos.php,../Cliente],[42,Miscompras,misCompras.php,../Cliente],[43,Carrito,carrito.php,../Cliente],[44,Agregar productos, agregarProductosAlCarrito.php,../Nada]*/
 $direccionMenu = $session->getDireccionMenu();
 $direccionPadre = $session->getDireccionPadreMenu();
 ?>
@@ -64,11 +64,11 @@ $direccionPadre = $session->getDireccionPadreMenu();
                                 echo '</a>';
 
                                 echo '<div class="dropdown-menu" aria-labelledby="navbarDropdown">';
-                                echo '<a class="dropdown-item" href="productos.php?tipo=Mates">Mates</a>';
-                                echo '<a class="dropdown-item" href="productos.php?tipo=Yerbas">Yerbas</a>';
-                                echo '<a class="dropdown-item" href="productos.php?tipo=Bombillas">Bombillas</a>';
-                                echo '<a class="dropdown-item" href="productos.php?tipo=Termos">Termos</a>';
-                                echo '<a class="dropdown-item" href="productos.php?tipo=SETS">SETS</a>';
+                                echo '<a class="dropdown-item" href="productos.php?tipo=Construccion">Construcción</a>';
+                                echo '<a class="dropdown-item" href="productos.php?tipo=Electricidad">Electricidad</a>';
+                                echo '<a class="dropdown-item" href="productos.php?tipo=Herramientas">Herramientas</a>';
+                                echo '<a class="dropdown-item" href="productos.php?tipo=Plomeria">Plomeria</a>';
+                                echo '<a class="dropdown-item" href="productos.php?tipo=Tornillos">Tornillos</a>';
                                 echo '</div>';
                                 echo '</div>';
                                 echo '</div>';

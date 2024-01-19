@@ -263,3 +263,11 @@ border: 2px solid rgba(60, 57, 231, 0.62);
   padding-top: 10%;
  }
 
+/*------------------------------------------Home---------------------------------------*/
+
+.home img{
+  max-width: 100%; /* Asegura que la imagen no sea más ancha que su contenedor */
+  max-height: 80%; /* Asegura que la imagen no sea más alta que su contenedor */
+  width: auto; /* Mantiene la relación de aspecto de la imagen */
+  height: auto; /* Mantiene la relación de aspecto de la imagen */ 
+}
