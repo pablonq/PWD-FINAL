@@ -221,6 +221,18 @@ class Session {
         }
         return $idRol;
     }
+   /**
+     * Devuelve un string con la descripcion del rol activo del usuario activo o null si no existe
+     * @return int
+     */
+    public function getDescripcionRol()
+    {
+        $param['idrol'] = $_SESSION['idrol'];
+        $objAbmRol = new AbmRol();
+        $descripcionRol = $objAbmRol->buscar($param);
+         $descripcion = $descripcionRol[0]->getRolDescripcion(); 
+        return $descripcion;
+    }
 
     /**
      * Devuelve un string con la dirección de mail del usuario activo o null si no existe

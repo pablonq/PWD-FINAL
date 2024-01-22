@@ -3,16 +3,27 @@ include_once("../../configuracion.php");
 $tituloPagina = "Ferreteria Chaneton";
 include_once("../Estructuras/headInseguro.php");
 
-
 if ($rol !=null ){
     include_once("../Estructuras/navSeguro.php");
+    if($descripcionRol == "Cliente"){
+      include_once("../Cliente/homeCliente.php");
+       
+    }
+    if($descripcionRol == "Deposito"){
+        include_once("../Deposito/homeDeposito.php");
+        
+    }
+    if($descripcionRol == "Admin"){
+        include_once("../Administrador/homeAdministrador.php");
+        
+    }
+    
     
 } else {
     include_once("../Estructuras/navInseguro.php");
-}
+    echo'
 
-if ($rol ==3 || $rol==null){
-  echo'
+
 <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
  
 
@@ -102,27 +113,9 @@ if ($rol ==3 || $rol==null){
       </div>
     </a>
   </div>';
-}
-if($rol == 1) {
-  echo'<div class="home">
-        <div class="carousel_titulo carousel-caption d-none d-md-block">
-         <p>ADMINISTRACIÓN</p>
-        </div>
-        <img src="../img/administracion.jpg" alt="administrador" class="">
-      </div>';
 
 }
-if($rol == 2) {
-  echo'<div class="home">
-        <div class="carousel_titulo carousel-caption d-none d-md-block">
-          <p>DEPOSITO</p>
-        </div>
-        <img src="../img/deposito2.jpeg" alt="administracion" class="">
-      </div>';
-
-}
-  ?>
-
+?>
 <?php
 include_once ('../Estructuras/footer.php');
 ?>

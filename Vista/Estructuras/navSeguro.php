@@ -2,6 +2,7 @@
 //$session = new Session();
 $nombreUsuario = $session->getUsNombre(); /*Cliente*/
 $rolActivo = $session->getIdRol(); /*3*/ 
+$descripcionRol = $session->getDescripcionRol();
 $idUsuario = $session->getIdUsuario();/*7*/
 $colRoles = $session->getColRoles();/*Cliente*/
 $colMenu = $session->getColMenu();/*[11,Inicio,home.php,../Home],[41,Productos,productos.php,../Cliente],[42,Miscompras,misCompras.php,../Cliente],[43,Carrito,carrito.php,../Cliente],[44,Agregar productos, agregarProductosAlCarrito.php,../Nada]*/
@@ -20,7 +21,21 @@ $direccionPadre = $session->getDireccionPadreMenu();
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
             <?php
+          echo "
+          <li class=\"nav-item mt-1 me-3 me-lg-0\">
+            <a class=\"nav-link\"rel=\"nofollow\">
+              Bienvenido ".$nombreUsuario."!
+            </a>
+          </li>
+          ";
+          ?>
+          </ul>
 
+          <!-- El resto de opciones se generan dinamicamente de acuerdo al rol del usuario -->
+          <ul class="navbar-nav d-flex flex-row">
+            <!-- Opciones de manejo de sesion -->
+            <?php
+            
             if(count($colMenu) != 0){
 
                 for ($i=0; $i < count($colMenu); $i++){
