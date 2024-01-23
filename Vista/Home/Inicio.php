@@ -1,6 +1,3 @@
-
-
-
 <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
  
 
@@ -58,36 +55,35 @@
 
 <div class="tarjetas d-flex justify-content-between">
   
-    <a class="cards" href="../Cliente/productos.php?tipo=Construccion">
+    <a class="cards" href="productos.php?tipo=Construccion">
       <img src="../img/Construccion/cal.png" alt="cal">
       <div class="cards_titulos">
       Construccion
       </div>
     </a>
-    <a class="cards" href="../Cliente/productos.php?tipo=Electricidad">
+    <a class="cards" href="productos.php?tipo=Electricidad">
       <img src="../img/Electricidad/cables.png" alt="cables">
       <div class="cards_titulos">
       Electricidad
             </div>
     </a>
-    <a class="cards" href="../Cliente/productos.php?tipo=Herramientas">
+    <a class="cards" href="productos.php?tipo=Herramientas">
     <img src="../img/Herramientas/serrucho.png" alt="herramientas">
     <div class="cards_titulos">
       Herramientas
       </div>
     </a>
-    <a class="cards" href="../Cliente/productos.php?tipo=Plomeria">
+    <a class="cards" href="productos.php?tipo=Plomeria">
       <img src="../img/Plomeria/tuberias.jpg" alt="tuberia">
       <div class="cards_titulos">
         Plomeria
       </div>
     </a>
     
-    <a class="cards" href="../Cliente/productos.php?tipo=Tornillos">
+    <a class="cards" href="productos.php?tipo=Tornillos">
       <img src="../img/Tornillos/tornillomadera.png" alt="tornillos">
       <div class="cards_titulos">
         Tornillos
       </div>
     </a>
-  </div>';
-
+  </div>

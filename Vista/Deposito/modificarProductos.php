@@ -2,7 +2,7 @@
 include_once("../../configuracion.php");
 $tituloPagina = "Gestionar Productos";
 include_once("../Estructuras/headSeguro.php");
-include_once("../Estructuras/banner.php");
+
 include_once("../Estructuras/navSeguro.php");
 //recibe el idproducto
 $datos = data_submitted();

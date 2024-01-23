@@ -13,27 +13,15 @@ $direccionPadre = $session->getDireccionPadreMenu();
 <!-- ________________________________________ NAV SEGURO _______________________________________ -->
 <nav class="navbar navbar-expand-lg ">
     <div class="container">
-    <a href="home.php"> <img src="../img/logo.png" class="logo" alt="Logo"></a>
+    <a href="#"> <img src="../img/logo.png" class="logo" alt="Logo"></a>
         <a class="navbar-brand text-white" href="#">FERRETERIA CHANETON</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
-            <?php
-          echo "
-          <li class=\"nav-item mt-1 me-3 me-lg-0\">
-            <a class=\"nav-link\"rel=\"nofollow\">
-              Bienvenido ".$nombreUsuario."!
-            </a>
-          </li>
-          ";
-          ?>
-          </ul>
-
-          <!-- El resto de opciones se generan dinamicamente de acuerdo al rol del usuario -->
+                      
           <ul class="navbar-nav d-flex flex-row">
-            <!-- Opciones de manejo de sesion -->
+            
             <?php
             
             if(count($colMenu) != 0){
@@ -67,49 +55,7 @@ $direccionPadre = $session->getDireccionPadreMenu();
                                 }
                             }
 
-                        } else {
-
-                            //DROPDOWN DE PRODUCTOS
-                            if ($direccionMenu == "productos.php"){
-                                echo '<div class="ml-auto">';
-                                //Caso para página actual (current)
-                                echo '<div class="nav-item dropdown active nav-underline">';
-                                echo '<a class="nav-link dropdown-toggle active nav-underline" href="#" id="navMenuProductos" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
-                                echo 'Productos';
-                                echo '</a>';
-
-                                echo '<div class="dropdown-menu" aria-labelledby="navbarDropdown">';
-                                echo '<a class="dropdown-item" href="productos.php?tipo=Construccion">Construcción</a>';
-                                echo '<a class="dropdown-item" href="productos.php?tipo=Electricidad">Electricidad</a>';
-                                echo '<a class="dropdown-item" href="productos.php?tipo=Herramientas">Herramientas</a>';
-                                echo '<a class="dropdown-item" href="productos.php?tipo=Plomeria">Plomeria</a>';
-                                echo '<a class="dropdown-item" href="productos.php?tipo=Tornillos">Tornillos</a>';
-                                echo '</div>';
-                                echo '</div>';
-                                echo '</div>';
-                                //FIN DROPDOWN DE PRODUCTOS
-                            } else {
-                                echo '<div class="ml-auto">';
-                                //Caso para otra página (no current)
-                                echo '<div class="nav-item dropdown">';
-                                echo '<a class="nav-link dropdown-toggle" href="#" id="navMenuProductos" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
-                                echo 'Productos';
-                                echo '</a>';
-
-                                echo '<div class="dropdown-menu" aria-labelledby="navbarDropdown">';
-                                echo '<a class="dropdown-item" href="../Cliente/productos.php?tipo=Mates">Mates</a>';
-                                echo '<a class="dropdown-item" href="../Cliente/productos.php?tipo=Yerbas">Yerbas</a>';
-                                echo '<a class="dropdown-item" href="../Cliente/productos.php?tipo=Bombillas">Bombillas</a>';
-                                echo '<a class="dropdown-item" href="../Cliente/productos.php?tipo=Termos">Termos</a>';
-                                echo '<a class="dropdown-item" href="../Cliente/productos.php?tipo=SETS">SETS</a>';
-                                echo '</div>';
-                                echo '</div>';
-                                echo '</div>';
-                                //FIN DROPDOWN DE PRODUCTOS
-                            }
-
-                        }
-                                
+                        }                                 
                     }
                 }
             }
@@ -119,47 +65,47 @@ $direccionPadre = $session->getDireccionPadreMenu();
                     <?php
                     if ($direccionPadre == "opcionesDeCuenta"){
                         //Caso para página actual (current)
-                        echo '<div class="nav-item dropdown active nav-underline">';
-                        echo '<a class="nav-link dropdown-toggle active nav-underline" href="#" id="nombreUsuarioActivo" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
-                        echo $nombreUsuario;
+                        echo '<li class="nav-item dropdown active nav-underline">';
+                        echo '<a class="nav-link dropdown-toggle active nav-underline" href="#" id="nombreUsuarioActivo" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
+                        echo 'Bienvenido '.$nombreUsuario.'! ';
                         echo '</a>';
                     } else {
                         //Caso para otra página (no current)
-                        echo '<div class="nav-item dropdown">';
-                        echo '<a class="nav-link dropdown-toggle" href="#" id="nombreUsuarioActivo" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
-                        echo $nombreUsuario;
+                        echo '<li class="nav-item dropdown">';
+                        echo '<a class="nav-link dropdown-toggle" href="#" id="nombreUsuarioActivo" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
+                        echo 'Bienvenido '.$nombreUsuario.'! ';
                         echo '</a>';
                     }
                     ?>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             
                             <?php
-                                if($direccionPadre == "opcionesDeCuenta"){
-                                    echo '<a class="dropdown-item" href="miPerfil.php">Mi Perfil</a>';
+                                if($direccionPadre == "Home"){
+                                    echo '<li><a class="dropdown-item" href="../opcionesDeCuenta/miPerfil.php">Mi Perfil</a></li>';
                                 } else {
-                                    echo '<a class="dropdown-item" href="../opcionesDeCuenta/miPerfil.php">Mi Perfil</a>';
+                                    echo '<li><a class="dropdown-item" href="../opcionesDeCuenta/miPerfil.php">Mi Perfil</a></li>';
                                 }
                             ?>
 
                             <?php
                             if(count($colRoles)>1){
                                 if($direccionPadre == "opcionesDeCuenta"){
-                                    echo '<a class="dropdown-item" href="cambiarRol.php">Cambiar Rol</a>';
+                                    echo '<li><a class="dropdown-item" href="cambiarRol.php">Cambiar Rol</a></li>';
                                 } else {
-                                    echo '<a class="dropdown-item" href="../opcionesDeCuenta/cambiarRol.php">Cambiar Rol</a>';
+                                    echo '<li><a class="dropdown-item" href="../opcionesDeCuenta/cambiarRol.php">Cambiar Rol</a></li>';
                                 }
                             }
                             ?>
-                            <div class="dropdown-divider"></div>
+                            <li><hr class="dropdown-divider"></li>
                             <?php
                                 if($direccionPadre == "opcionesDeCuenta"){
-                                    echo '<a class="dropdown-item" href="cerrarSesion.php">Cerrar Sesión</a>';
+                                    echo '<li><a class="dropdown-item" href="cerrarSesion.php">Cerrar Sesión</a></li>';
                                 } else {
-                                    echo '<a class="dropdown-item" href="../opcionesDeCuenta/cerrarSesion.php">Cerrar Sesión</a>';
+                                    echo '<li><a class="dropdown-item" href="../opcionesDeCuenta/cerrarSesion.php">Cerrar Sesión</a></li>';
                                 }
                             ?>
-                        </div>
-                    </div>
+                        </ul>
+                              </li>
                 </div>
             </ul>
         </div>

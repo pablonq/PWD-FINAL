@@ -2,7 +2,7 @@
 include_once("../../configuracion.php");
 $tituloPagina = "Mi Perfil";
 include_once("../Estructuras/headSemiSeguro.php");
-include_once("../Estructuras/banner.php");
+
 include_once("../Estructuras/navSeguro.php");
 //$session = new Session();
 
