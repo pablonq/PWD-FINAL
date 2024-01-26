@@ -2,12 +2,15 @@
 include_once("../../configuracion.php");
 $tituloPagina = "Productos";
 include_once("../Estructuras/headSeguro.php");
-/* include_once("../Estructuras/banner.php"); */
+
 include_once("../Estructuras/navSeguro.php");
 ?>
 
 <!-- ________________________________________ INICIO CONTENIDO _________________________________ -->
-<div class="container">
+<div class="producto">
+  <div class="container_cards">
+
+
     <?php
 
     $datos = data_submitted();
@@ -16,28 +19,28 @@ include_once("../Estructuras/navSeguro.php");
 
     if(count($listaProd) > 0){
 
-        echo "<div class='row'>";
-        for ($i = 0; $i < count($listaProd); $i++) {
-            echo "<div class='col'>";
-            echo "<div class='p-3 d-flex justify-content-center align-items-center'>";
-            echo "<div class='card text-center sombraCarta' style='width: 17rem;'>";
-            echo "<img class='card-img-top' style='height: 16rem;' src='" . $listaProd[$i]->getImagenProducto() . "' alt='" . $listaProd[$i]->getProNombre() . "'>";
-            echo "<div class='card-body'>";
-            echo "<h5 class='card-title'>" . $listaProd[$i]->getProNombre() . "</h5>";
-            echo "<p class='card-text'>Precio: $" . $listaProd[$i]->getProDetalle() . "</p>";
-            echo "<p class='card-text'>Stock: " . $listaProd[$i]->getProCantstock() . "</p>";
         
-            echo "<a href='agregarProductoAlCarrito.php?idproducto=".$listaProd[$i]->getIdProducto()."'  class='btn btn-primary' >Agregar al carrito</a></button>";
-
+        for ($i = 0; $i < count($listaProd); $i++) {
+          echo "<div class='cards_producto'>";
+            echo "<div class='cards_cuerpo'>";
+              echo "<div class='card_img'><img src='" . $listaProd[$i]->getImagenProducto() . "' alt='" . $listaProd[$i]->getProNombre() . "'></div>";
+              echo "<div class='card_info'>";
+                echo "<p class='text_title'>". $listaProd[$i]->getProNombre() ."</p>";
+                echo "<p class='text_body'> Stock: ". $listaProd[$i]->getProCantstock() ." uni</p>";
+              echo "</div>";
             echo "</div>";
-            echo "</div>";
+            echo "<div class='card_footer'>";
+              echo "<span class='text_title'> $". $listaProd[$i]->getProDetalle()."</span>";
+              echo "<div class='card_button'>";
+              echo "<a href='agregarProductoAlCarrito.php?idproducto=".$listaProd[$i]->getIdProducto()."' ><i class='svg_icon bi bi-cart-check-fill'></i></a>";
+              echo "</div>";
             echo "</div>";
             echo "</div>";
         }
-        echo "</div>";
+        /* echo "</div>"; */
 
     } else {
-        
+
         echo '<div class="container mt-5 mb-5">';
         echo '<div class="row justify-content-center">';
         echo '<div class="col-md-6">';
@@ -50,6 +53,7 @@ include_once("../Estructuras/navSeguro.php");
     }
 
     ?>
+    </div>
 </div>
 <!-- ________________________________________ FIN CONTENIDO ____________________________________ -->
 
