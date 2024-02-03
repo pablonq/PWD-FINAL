@@ -12,7 +12,7 @@ include_once("../Estructuras/navSeguro.php");
  */
 ?>
 
-<div class="container mt-4 mb-4">
+<div class="miscompras">
     <?php
 
     // recibe el id de usuario
@@ -24,7 +24,7 @@ include_once("../Estructuras/navSeguro.php");
     if (count($listaCompra) > 1) {
 
         echo "<table class='table table-bordered'>";
-        echo '<thead class="thead-dark"><tr><th>ID DE COMPRA</th><th>FECHA</th><th>ESTADO DE COMPRA</th><th>ITEMS</th><th>PROGRESO</th></tr></thead>';
+        echo '<thead class="thead-dark"><tr><th>ID DE COMPRA</th><th>METODO</th><th>FECHA</th><th>ESTADO DE COMPRA</th><th>ITEMS</th><th>PROGRESO</th></tr></thead>';
         echo '<tbody>';
 
         for ($i = 0; $i < count($listaCompra); $i++) {
@@ -48,7 +48,8 @@ include_once("../Estructuras/navSeguro.php");
 
                 echo '<tr>
                 <td> <div class="textoIdCompra text-center">' . $objCompra->getIdCompra() . '</div></td>
-                <td>' . $objCompra->getCoFecha() . '</td>';
+                <td>' . $objCompra->getCoFecha() . '</td>
+                <td>' . $objCompra->getEntrega() . '</td>';
                 if ($tipoEstado == "iniciada"){
                     echo '<td> <div class="fondoAmarillo text-center">' . "Iniciada" . '</div></td>';
 

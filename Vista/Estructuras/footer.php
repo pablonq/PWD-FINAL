@@ -1,4 +1,8 @@
-
+<script src="../js/validarLogin.js"></script>
+<script src="../js/validarCrearCuenta.js"></script>
+<script src="../js/validarProductoCarrito.js"></script>
+<script src="../js/configuracionCuenta.js"></script>
+<script src="https://sdk.mercadopago.com/js/v2"></script>
 <!-- Footer -->
     <footer class="text-center text-white" style="background-color: #0a4275;">
       <!-- Grid container -->

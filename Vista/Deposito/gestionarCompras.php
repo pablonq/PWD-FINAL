@@ -14,17 +14,6 @@ include_once("../Estructuras/navSeguro.php");
  */
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Listado de Compras</title>
-    <!-- Enlaces a Bootstrap CSS -->
-    
-</head>
-<body>
-
 <div class="container mt-4 mb-4">
     <?php
     $objAbmCompra = new AbmCompra();
@@ -158,8 +147,7 @@ include_once("../Estructuras/navSeguro.php");
 
 
 
-</body>
-</html>
+
 
 <?php
 include_once("../Estructuras/footer.php");

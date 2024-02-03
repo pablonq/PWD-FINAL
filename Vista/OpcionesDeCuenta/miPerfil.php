@@ -64,7 +64,7 @@ $mail = $session->getUsMail();
     </div>
 </div>
 </div>
-<script src="../js/configuracionCuenta.js"></script>
+<!-- <script src="../js/configuracionCuenta.js"></script> -->
 <!-- ________________________________________ FIN CONTENIDO ____________________________________ -->
 
 <?php

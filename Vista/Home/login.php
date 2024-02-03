@@ -36,7 +36,7 @@ include_once("../Estructuras/navInseguro.php");
         </div>
     </div>
 </div>
-<script src="../js/validarLogin.js"></script>
+<!-- <script src="../js/validarLogin.js"></script> -->
 <!-- ________________________________________ FIN CONTENIDO ____________________________________ -->
 
 <?php

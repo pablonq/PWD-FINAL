@@ -31,7 +31,7 @@ $busquedaProducto = $abmProducto->buscar($datos);
                 </div>
                 <form name="formAgregarProducto" id="formAgregarProducto" method="POST" class="row needs-validation">
                   <div class="col-md-6">
-                    <img class="card-img-top" style="height: 16rem;" src='; echo $producto->getImagenProducto(); echo ' alt="Product Image">
+                    <img class="card-img-top" style="height: 7rem;" src='; echo $producto->getImagenProducto(); echo ' alt="Product Image">
                   </div>
                   <div class="col-md-6">
                     <label for="idproducto">Código:</label>
@@ -72,7 +72,7 @@ $busquedaProducto = $abmProducto->buscar($datos);
     }
 ?>
 
-<script src="../js/validarProductoCarrito.js"></script>
+<!-- <script src="../js/validarProductoCarrito.js"></script> -->
 
 <?php
 include_once("../Estructuras/footer.php");

@@ -4,7 +4,7 @@
 include_once('../../configuracion.php');
 $tituloPagina = "Gestionar Roles";
 include_once("../Estructuras/headSeguro.php");
-include_once("../Estructuras/banner.php");
+
 include_once("../Estructuras/navSeguro.php");
 
 $rol = new AbmRol();

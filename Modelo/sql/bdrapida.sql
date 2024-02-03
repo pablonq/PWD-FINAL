@@ -260,7 +260,8 @@ CREATE TABLE compra (
 ALTER TABLE `compra`
   ADD PRIMARY KEY (`idcompra`),
   ADD UNIQUE KEY `idcompra` (`idcompra`),
-  ADD KEY `fkcompra_1` (`idusuario`);
+  ADD KEY `fkcompra_1` (`idusuario`),
+  ADD KEY `fkcompra_2` (`identrega`),
 
 --
 -- AUTO_INCREMENT de la tabla 'compra'
@@ -272,7 +273,8 @@ ALTER TABLE `compra`
 -- Filtros para la tabla 'compra'
 --
 ALTER TABLE `compra`
-  ADD CONSTRAINT `fkcompra_1` FOREIGN KEY (`idusuario`) REFERENCES `usuario` (`idusuario`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `fkcompra_1` FOREIGN KEY (`idusuario`) REFERENCES `usuario` (`idusuario`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `fkcompra_2` FOREIGN KEY (`identrega`) REFERENCES `entrega` (`identrega`) ON UPDATE CASCADE;
 
 -- Volcado de datos de la tabla compra //cambiar los id compra y usuario
 INSERT INTO compra (idcompra, cofecha, idusuario) VALUES
@@ -450,7 +452,33 @@ INSERT INTO usuariorol (idusuario, idrol) VALUES
 (9,3); -- Cliente (AdminTotal/1234)
 
 -- ----------------------------------------------------------------------------------
+--
+-- Estructura de tabla para la tabla 'entrega'
+--
+CREATE TABLE entega (
+  identrega bigint(20) NOT NULL,
+  nombre varchar(50) NOT NULL,
+  descripcion varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Indices de la tabla 'entrega'
+--
+ALTER TABLE `entega`
+  ADD PRIMARY KEY (`identrega`),
+  ADD UNIQUE KEY `identega` (`identra`);
+
+--
+-- AUTO_INCREMENT de la tabla 'entrega'
+--
+ALTER TABLE `entrega`
+  MODIFY `identrega` bigint(20) NOT NULL AUTO_INCREMENT;
+
+-- Volcado de datos para la tabla rol
+INSERT INTO entrega (identrega, nombre, descripcion) VALUES
+(1, 'Retiro en sucursal', 'Retira el pedido en nuestra sucursal ubicada en Av Olascoaga 1620'),
+(2, 'Entrega a domicilio','Recibir el pedido en tu domicilio');
+-- ----------------------------------------------------------------------------------
 -- INFO datos truncados al ingresar fecha '0000-00-00 00:00:00' para timestamp
 
 -- TIMESTAMP: Tiene un rango más limitado en comparación con DATETIME.
