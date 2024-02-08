@@ -51,6 +51,7 @@ if ($session->validar() && $session->tienePermiso()) {
 
             <!-- link a librería JS para encriptar -->
             <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script>
+            <script src="https://sdk.mercadopago.com/js/v2"></script>
 
 
 </head>

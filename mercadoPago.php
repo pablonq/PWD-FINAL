@@ -1,6 +1,6 @@
 <?php
 require 'vendor/autoload.php';
-MercadoPago\SDK::setAccessToken('TEST-1289708495081474-020310-c44b89311d71f3c7048b39e3c2882c27-167604962');
+MercadoPago\SDK::setAccessToken('TEST-1323948781483767-020715-1d49ac76392fec760ea8bd8d320dbfc3-1673270882');
 
 $preference = new MercadoPago\Preference();
         $item = new MercadoPago\Item();
@@ -35,7 +35,7 @@ $preference = new MercadoPago\Preference();
   
 
   <script>
-  const mp = new MercadoPago('TEST-6755ed7a-3269-43a2-b4c5-7352f056e0a5',{
+  const mp = new MercadoPago('TEST-9c5026e5-50a5-40c0-9203-6a14199c474b',{
     locale: 'es-AR',
     
   });

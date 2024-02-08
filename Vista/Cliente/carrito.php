@@ -33,11 +33,11 @@ $objProducto = new AbmProducto();
 $listaCompraItem = $objCompraItem->buscar($idUCompra);
 
 //SDK de mercadopago
-require_once '../../vendor/autoload.php';
+require '../../vendor/autoload.php';
  
 //Agrega credenciales
 
-MercadoPago\SDK::setAccessToken('TEST-1289708495081474-020310-c44b89311d71f3c7048b39e3c2882c27-167604962');
+MercadoPago\SDK::setAccessToken('TEST-1323948781483767-020715-1d49ac76392fec760ea8bd8d320dbfc3-1673270882');
 
 
 ?>
@@ -52,32 +52,36 @@ MercadoPago\SDK::setAccessToken('TEST-1289708495081474-020310-c44b89311d71f3c704
         echo '<thead class="thead-dark"><tr><th scope="col">IMAGEN</th><th scope="col">NOMBRE PRODUCTO</th><th scope="col">CANTIDAD</th><th scope="col">PRECIO POR UNIDAD</th><th scope="col">OPCIONES</th></tr></thead><tbody>';
         // Crea un objeto de preferencia
         $preference = new MercadoPago\Preference();
-        $item = new MercadoPago\Item();
         $items = array();
         for ($i = 0; $i < count($listaCompraItem); $i++) {
-            $objCompraItem = $listaCompraItem[$i];
-            $idProducto['idproducto'] = $objCompraItem->getObjProducto()->getIdProducto();
-            $busquedaProducto = $objProducto->buscar($idProducto);
-            $producto = $busquedaProducto[0];//objProducto
-            $montoAPagar = $montoAPagar + ($producto->getProDetalle() *  $objCompraItem->getCiCantidad());
-            
-            $item->id = $idProducto['idproducto'];
-            $item->title = $producto->getProNombre();
-            $item->quantity = $objCompraItem->getCiCantidad();
-            $item->unit_price = $producto->getProDetalle();
-            $item->currency_id = "ARS";
-           
-            $preference->items = array_push($items, $item);
-            $preference->save();
-
-            echo '<tr>
-              <td><img src=' . $producto->getImagenProducto() . ' width="50px"></td>
-              <td>' . $producto->getProNombre() . '</td>
-              <td>' . $objCompraItem->getCiCantidad() . '</td>
-              <td>' . $producto->getProDetalle() . '</td>
-              <td><a href="action/quitarProductoCarrito.php?idcompraitem=' . $objCompraItem->getIdCompraItem() . '" class="btn btn-danger w-100">Quitar Producto</a></td>
-              </tr>';
+          $objCompraItem = $listaCompraItem[$i];
+          $idProducto['idproducto'] = $objCompraItem->getObjProducto()->getIdProducto();
+          $busquedaProducto = $objProducto->buscar($idProducto);
+          $producto = $busquedaProducto[0];//objProducto
+          $montoAPagar = $montoAPagar + ($producto->getProDetalle() *  $objCompraItem->getCiCantidad());
+          
+          $item = new MercadoPago\Item();
+          $item->id = $idProducto['idproducto'];
+          $item->title = $producto->getProNombre();
+          $item->quantity = $objCompraItem->getCiCantidad();
+          $item->unit_price = $producto->getProDetalle();
+          $item->currency_id = "ARS";
+          $items[] = $item;
+          
+          
+          
+          
+          echo '<tr>
+          <td><img src=' . $producto->getImagenProducto() . ' width="50px"></td>
+          <td>' . $producto->getProNombre() . '</td>
+          <td>' . $objCompraItem->getCiCantidad() . '</td>
+          <td>' . $producto->getProDetalle() . '</td>
+          <td><a href="action/quitarProductoCarrito.php?idcompraitem=' . $objCompraItem->getIdCompraItem() . '" class="btn btn-danger w-100">Quitar Producto</a></td>
+          </tr>';
         }
+        $preference->items = $items;
+        $preference->back_urls = array("success"=>"action/pagoCompra.php?idusuario='.$idUsuario.'", "failure"=>"carrito.php");
+        $preference->save();  
         echo '<tr><td colspan="3">Metodo de Envio: <select class="form-select" aria-label="Default select example" name="envio" required>
         <option selected disabled value="">Seleccione una opción</option>
         <option value="$paramCompra["identrega"] = 1">Retiro en Sucursal</option>
@@ -85,8 +89,8 @@ MercadoPago\SDK::setAccessToken('TEST-1289708495081474-020310-c44b89311d71f3c704
         
         </select></td>';
         echo '<td colspan="1" class="robotoBold">Total: $'.$montoAPagar.'</td>';
-        echo '<td colspan="1"><a href="action/pagoCompra.php?idusuario='.$idUsuario.'" class="btn btn-primary w-100">REALIZAR COMPRA</a></td></tr>';
         echo '<td colspan="1"><div href="" class="checkout-btn"></div></td></tr>';
+        /* echo '<td colspan="1"><a href="action/pagoCompra.php?idusuario='.$idUsuario.'" class="btn btn-primary w-100">REALIZAR COMPRA</a></td></tr>'; */
         echo "</tbody></table><br><br>";
     } else {
 
@@ -104,18 +108,22 @@ MercadoPago\SDK::setAccessToken('TEST-1289708495081474-020310-c44b89311d71f3c704
     ?>
 </div>
 <script>
-  const mp = new MercadoPago('TEST-6755ed7a-3269-43a2-b4c5-7352f056e0a5',{
-    locale: 'es_AR'
+  const mp = new MercadoPago('TEST-9c5026e5-50a5-40c0-9203-6a14199c474b',{
+    locale: 'es-AR',
   });
-  mp.checkout({
-    preference: {
-      id: '<?php echo $preference->$id; ?>'
+  
+  const checkout = mp.checkout({
+   
+   preference:{
+     id:'<?php echo $preference->id; ?>'
     },
-    render:{
+    
+    render: {
       container: '.checkout-btn',
       label: 'PAGAR'
     }
   })
+ 
   </script>
 
 <?php
