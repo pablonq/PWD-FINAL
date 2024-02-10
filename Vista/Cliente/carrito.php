@@ -80,7 +80,11 @@ MercadoPago\SDK::setAccessToken('TEST-1323948781483767-020715-1d49ac76392fec760e
           </tr>';
         }
         $preference->items = $items;
-        $preference->back_urls = array("success"=>"action/pagoCompra.php?idusuario='.$idUsuario.'", "failure"=>"carrito.php");
+        $preference->back_urls = array(
+          "success" => "http://localhost/PWD/PWD-FINAL/Vista/Cliente/action/pagoCompra.php?idusuario=".$idUsuario,
+          "failure" => "http://localhost/PWD/PWD-FINAL/Vista/Cliente/action/carrito.php",
+          "pending" => "http://localhost/PWD/PWD-FINAL/Vista/Cliente/action/pagoCompra.php?idusuario=".$idUsuario
+          );
         $preference->save();  
         echo '<tr><td colspan="3">Metodo de Envio: <select class="form-select" aria-label="Default select example" name="envio" required>
         <option selected disabled value="">Seleccione una opción</option>
