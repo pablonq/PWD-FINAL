@@ -119,6 +119,8 @@ require '../../vendor/autoload.php';
                 } elseif ($tipoEstado == 'aceptada') {
                     echo '<div class="d-block"> <a href="action/enviarCompra.php?idcompra=' . $objCompra->getIdCompra() . '" class="btn btn-success w-100"  mr-2 >Enviar Compra</a> 
                           <a href="action/cancelarCompra.php?idcompra=' . $objCompra->getIdCompra() . '" class="btn btn-danger w-100" >Cancelar Compra</a> </div>';
+                          
+
 
                 } elseif ($tipoEstado == 'enviada') {
                     echo '<div class="d-block"> <a href="action/cancelarCompra.php?idcompra=' . $objCompra->getIdCompra() . '" class="btn btn-danger w-100" >Cancelar Compra</a> </div>';

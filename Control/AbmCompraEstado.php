@@ -297,6 +297,15 @@ class AbmCompraEstado{
                 $param['cefechafin'] = null;
                 $exito = $cancelado->alta($param);
                 $resp = true;
+                
+                //Envia mail de la compra
+                /* $objCompraItem = new AbmCompraItem();
+                $objUsuario = new AbmUsuario();
+                $idUsuario = $compra->getIdUsuario();
+                $arrayUsuario = $objUsuario->buscar($idUsuario);
+                $nombreUsuario = $arrayUsuario->getUsNombre();
+                $mailUsuario = $arrayUsuario->getUsMail();
+                 */
             
                 echo "Envio realizado";
             }else{
