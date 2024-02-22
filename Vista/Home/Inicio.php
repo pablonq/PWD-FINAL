@@ -87,3 +87,30 @@
       </div>
     </a>
   </div>
+
+  <!-- Modal -->
+<div class="modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form name="formLogin" id="formLogin" method="POST" class="needs-validation">
+      <a href="home.php"> <img src="../img/logo.png" class="logo" alt="Logo"></a>
+      <br>
+      <br>
+        <div class="h2">Iniciar Sesión</div>
+        <!-- Zona de alerta -->
+        <div id="alertaMensajes">
+        </div>
+
+        <div class="form-group contenedor-dato">
+            <!--<label for="username">Nombre de Usuario:</label>-->
+            <input type="text" class="form-control form-control-lg" id="usnombre"  name="usnombre" placeholder="Usuario">
+        </div>
+        <div class="form-group contenedor-dato mt-3">
+            <!--<label for="password">Contraseña:</label>-->
+            <input type="password" class="form-control form-control-lg" id="uspass" name="uspass" placeholder="Contraseña">
+        </div>
+        <button type="submit" id="ingresar" class="btn btn-primary btn-lg w-100 mt-3">INGRESAR</button>
+        </form>
+    </div>
+  </div>
+</div>

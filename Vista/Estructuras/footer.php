@@ -4,6 +4,7 @@
 <script src="../js/configuracionCuenta.js"></script>
 <script src="https://sdk.mercadopago.com/js/v2"></script>
 <!-- Footer -->
+</body>
     <footer class="text-center text-white" style="background-color: #0a4275;">
       <!-- Grid container -->
         <div class="footer_contactos   text-center">
@@ -24,5 +25,4 @@
         </div>
       
     </footer>
-  </body>
 </html>
