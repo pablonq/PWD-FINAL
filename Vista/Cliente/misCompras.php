@@ -24,7 +24,7 @@ include_once("../Estructuras/navSeguro.php");
     if (count($listaCompra) > 1) {
 
         echo "<table class='table table-bordered'>";
-        echo '<thead class="thead-dark"><tr><th>ID DE COMPRA</th><th>FECHA</th><th>ESTADO DE COMPRA</th><th>ITEMS</th><th>PROGRESO</th></tr></thead>';
+        echo '<thead><tr><th style="width: 50px;">ID COMPRA</th><th style="width: 105px;">FECHA</th><th style="width: 100px;">ESTADO DE COMPRA</th><th style="width: 700px;" rowspan="2">ITEMS</th><th style="width: 100px;">PRECIO TOTAL</th><th style="width: 150px;">PROGRESO</th></tr></thead>';
         echo '<tbody>';
 
         for ($i = 0; $i < count($listaCompra); $i++) {
@@ -71,8 +71,8 @@ include_once("../Estructuras/navSeguro.php");
                 $listaCompraItem = $objCompraItem->buscar($bucarCompra);
 
                 if (count($listaCompraItem) > 0) {
-                    echo "<table class='table table-bordered'>";
-                    echo '<tr class="robotoBold"><td>IMAGEN</td><td>PRODUCTO</td><td>PRECIO POR UNIDAD</td><td>CANTIDAD</td></tr>';
+                    echo "<table>";
+                    echo '<tr></tr>';
 
                     $total = 0;
 
@@ -84,15 +84,14 @@ include_once("../Estructuras/navSeguro.php");
                         $total = $total + ($producto->getProDetalle() * $objCompraItem->getCiCantidad());
 
                         echo '<tr>
-                                <td><img src=' . $producto->getImagenProducto() . ' width="60px"></td>
-                                <td>' . $producto->getProNombre() . '</td>
-                                <td>$' . $producto->getProDetalle() . '</td>
-                                <td>' . $objCompraItem->getCiCantidad() . '</td>
+                                <td> -<b> ' . $producto->getProNombre() . '</b>.  Cant.: <b>'.$objCompraItem->getCiCantidad().'</b>.  Precio unit.: <b>$'.$producto->getProDetalle().'</b></td>
+                                
+                                
                             </tr>';
                     }
-                    echo '<tr><td colspan="4" class="robotoBold">Total: $'.$total.'</td></tr>';
                     echo "</table>";
-                }
+                    echo '<td class="robotoBold text-center"><b>$'.$total.'</b></td>';
+                  }
                 if($tipoEstado == 'iniciada'){
                     echo '</td>
                             <td>

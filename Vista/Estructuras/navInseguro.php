@@ -16,7 +16,7 @@ $direccionPadre = $session->getDireccionPadreMenu();
         <div class="collapse navbar-collapse navbar-items" id="navbarNav">
             <ul class="navbar-nav ml-auto">
               <li class="nav-item active ">
-                <a class="nav-link active text-white " aria-current="page" href="crearCuenta.php">Crear Cuenta</a>
+                <a class="nav-link active text-white " data-bs-toggle="modal" data-bs-target="#registroModal" id="registroBtn" href="#">Crear Cuenta</a>
               </li>
               <li class="nav-item active">
                 <a class="nav-link active text-white" data-bs-toggle="modal" data-bs-target="#exampleModal" id="loginBtn" href="#">Iniciar Sesión</a>

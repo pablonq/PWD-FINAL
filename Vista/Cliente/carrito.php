@@ -49,7 +49,7 @@ MercadoPago\SDK::setAccessToken('TEST-1323948781483767-020715-1d49ac76392fec760e
     $montoAPagar = 0;
     if (count($listaCompraItem) > 0) {
         echo "<table class='table table-bordered'>";
-        echo '<thead class="thead-dark"><tr><th scope="col">IMAGEN</th><th scope="col">NOMBRE PRODUCTO</th><th scope="col">CANTIDAD</th><th scope="col">PRECIO POR UNIDAD</th><th scope="col">OPCIONES</th></tr></thead><tbody>';
+        echo '<thead class="thead-dark"><tr><th scope="col" style="width: 80px;">IMAGEN</th><th style="width: 600px;" scope="col">NOMBRE PRODUCTO</th><th scope="col" style="width: 80px;">CANTIDAD</th><th class="text-center" scope="col" style="width: 80px;">PRECIO POR UNIDAD</th><th style="width: 100px;" scope="col">OPCIONES</th></tr></thead><tbody>';
         // Crea un objeto de preferencia
         $preference = new MercadoPago\Preference();
         $items = array();
@@ -72,10 +72,10 @@ MercadoPago\SDK::setAccessToken('TEST-1323948781483767-020715-1d49ac76392fec760e
           
           
           echo '<tr>
-          <td><img src=' . $producto->getImagenProducto() . ' width="50px"></td>
-          <td>' . $producto->getProNombre() . '</td>
-          <td>' . $objCompraItem->getCiCantidad() . '</td>
-          <td>' . $producto->getProDetalle() . '</td>
+          <td class="text-center"><img src=' . $producto->getImagenProducto() . ' width="50px"></td>
+          <td class="h5"><b>' . $producto->getProNombre() . '</b></td>
+          <td class="text-center">' . $objCompraItem->getCiCantidad() . '</td>
+          <td class="text-center"> $' . $producto->getProDetalle() . '</td>
           <td><a href="action/quitarProductoCarrito.php?idcompraitem=' . $objCompraItem->getIdCompraItem() . '" class="btn btn-danger w-100">Quitar Producto</a></td>
           </tr>';
         }
@@ -86,13 +86,13 @@ MercadoPago\SDK::setAccessToken('TEST-1323948781483767-020715-1d49ac76392fec760e
           "pending" => "http://localhost/PWD/PWD-FINAL/Vista/Cliente/action/pagoCompra.php?idusuario=".$idUsuario
           );
         $preference->save();  
-        echo '<tr><td colspan="3">Metodo de Envio: <select class="form-select" aria-label="Default select example" name="envio" required>
+       /*  echo '<tr><td colspan="3">Metodo de Envio: <select class="form-select" aria-label="Default select example" name="envio" required>
         <option selected disabled value="">Seleccione una opción</option>
         <option value="$paramCompra["identrega"] = 1">Retiro en Sucursal</option>
         <option value="$paramCompra["identrega"] = 2">Envio a Domicilio</option>
         
-        </select></td>';
-        echo '<td colspan="1" class="robotoBold">Total: $'.$montoAPagar.'</td>';
+        </select></td>'; */
+        echo '<td colspan="4" class="robotoBold text-center">Total:<b> $'.$montoAPagar.'</b></td>';
         echo '<td colspan="1"><div href="" class="checkout-btn"></div></td></tr>';
         /* echo '<td colspan="1"><a href="action/pagoCompra.php?idusuario='.$idUsuario.'" class="btn btn-primary w-100">REALIZAR COMPRA</a></td></tr>'; */
         echo "</tbody></table><br><br>";

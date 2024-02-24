@@ -88,7 +88,7 @@
     </a>
   </div>
 
-  <!-- Modal -->
+  <!-- Modal Inicio Sesion-->
 <div class="modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -111,6 +111,32 @@
         </div>
         <button type="submit" id="ingresar" class="btn btn-primary btn-lg w-100 mt-3">INGRESAR</button>
         </form>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Registro-->
+<div class="modal" id="registroModal" tabindex="-1" aria-labelledby="registroModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+    <form name="formCrearCuenta" id="formCrearCuenta" method="POST" class="needs-validation">
+      <a href="home.php"> <img src="../img/logo.png" class="logo" alt="Logo"></a>
+      <br>
+      <br>
+        <div class="h2">Registro</div>  
+        <!-- Zona de alerta -->
+          <div id="alertaMensajes">
+          </div>
+          <div class="form-group contenedor-dato">
+          <!--<label for="usnombre">Nombre de Usuario:</label>-->
+            <input type="text" class="form-control form-control-lg" id="usnombre" name="usnombre" placeholder="Nombre de Usuario" required>
+          </div>
+          <div class="form-group contenedor-dato mt-3">
+          <!--<label for="usmail">Correo Electrónico:</label>-->
+            <input type="text" class="form-control form-control-lg" id="usmail" name="usmail" placeholder="Correo Electrónico" required>
+          </div>
+          <button type="submit" class="btn btn-primary btn-lg w-100 mt-3">CREAR CUENTA</button>
+    </form>
     </div>
   </div>
 </div>

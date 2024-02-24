@@ -304,22 +304,17 @@ border: 2px solid rgba(60, 57, 231, 0.62);
   max-width: 60%;
   margin-left: 300px;
 }
-/*------------------------------------------CMis compras---------------------------------------*/
-.miscompras{
-  margin-top: 200px;
-  max-width: 60%;
-  margin-left: 300px;
-}
+
 /*------------------------------------------Modal---------------------------------------*/
 form {
   
-  background-image: linear-gradient(to bottom, #49496e,#292935); /* Color de fondo con transparencia */
+  background-image: linear-gradient(to bottom, #0a4275,#0b2241); /* Color de fondo con transparencia */
   width: 500px;
   height: 500px;
   backdrop-filter: blur(5px); /* Aplicar desenfoque al fondo */
- align-items: center;
+  align-items: center;
  flex-direction: column;
-  padding: 47px;
+ padding: 47px;
   padding-bottom: 57px;
   color: #fff;
   border-radius: 8px;
@@ -340,4 +335,29 @@ form img{
 form .h2{
   text-align: center;
 }
+/*------------------------------------------Mis compras---------------------------------------*/
+.table{
+  border-color: #0b2241;
+  border: 5px solid #0b2241;;
+  background-color: aquamarine;
+  
+}
+.table th{
+  text-align: center;
+  vertical-align: middle;
+  background-color: #0a4275;
+}
+.table td{
+  vertical-align: middle;
+}
 
+.miscompras{
+  margin-top: 90px;
+  max-width: 70%;
+  margin-left: 250px;
+  
+  background-image: url('../img/miscompras.jpg');
+  background-size: cover; /* Para cubrir todo el fondo */
+  background-position: center; /* Para centrar la imagen */
+    
+}
