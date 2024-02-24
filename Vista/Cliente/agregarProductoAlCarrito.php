@@ -12,51 +12,41 @@ $abmProducto = new AbmProducto;
 $busquedaProducto = $abmProducto->buscar($datos);
 
 ?>
-
+<div class="agregarProduc">
 <?php
     if (count($busquedaProducto) > 0){
         $producto = $busquedaProducto[0];
-
+         
         echo '
-        <div class="container mt-4 mb-4">
-          <div class="row justify-content-center">
-            <div class="col-md-6">
-              <div class="card">
-                <div class="card-header bg-dark text-white">
-                  <h4 class="mb-2 mt-2 text-center">'; echo $producto->getProNombre(); echo '</h4>
-                </div>
-                <div class="card-body">
-                  <!-- Zona de alerta -->
+                <!-- Zona de alerta -->
                 <div id="alertaMensajes">
                 </div>
-                <form name="formAgregarProducto" id="formAgregarProducto" method="POST" class="row needs-validation">
-                  <div class="col-md-6">
-                    <img class="card-img-top" style="height: 7rem;" src='; echo $producto->getImagenProducto(); echo ' alt="Product Image">
-                  </div>
-                  <div class="col-md-6">
-                    <label for="idproducto">Código:</label>
-                    <input type="text" name="idproducto" id="idproducto" class="visorProducto w-100" value='; echo $producto->getIdProducto(); echo ' readonly>
-
-                    <label for="pronombre">Nombre:</label>
-                    <input type="text" id="pronombre" name="pronombre" class="visorProducto w-100" value='; echo $producto->getProNombre(); echo ' readonly>
-
-                    <label for="prodetalle">Precio:</label>
-                    <input type="text" id="prodetalle" name="prodetalle" class="visorProducto w-100" value='; echo "$" . $producto->getProDetalle(); echo ' readonly>
-
-                    <label for="cicantidad">Stock:</label>
-                    <input type="text" id="cicantidad" name="cicantidad" class="visorProducto w-100" value='; echo $producto->getProCantstock(); echo ' readonly>
-
-                      <div class="contenedor-dato form-group">
+                <form name="formAgregarProducto" id="formAgregarProducto" method="POST" class="text-center needs-validation">
+                  <img src='. $producto->getImagenProducto().' alt="Product Image">
+                  <br>
+                  <br>
+                  <br>
+                  <h4 class="text-center">'.$producto->getProNombre().'</h4>
+                  <div class="inputs text-center">
+                    <input type="hidden" name="idproducto" id="idproducto"  value='; echo $producto->getIdProducto(); echo '>
+               
+                    <input type="hidden" id="pronombre" name="pronombre"  value='; echo $producto->getProNombre(); echo '>
+                    <label for="prodetalle" class="text-center">Precio:</label>
+                    <input type="text" id="prodetalle" name="prodetalle"  value=$'. $producto->getProDetalle().'>
+                    
+                    <input type="hidden" id="cicantidad" name="cicantidad"  value='; echo $producto->getProCantstock(); echo '>
+                    <br>
+                    <div class="text-center">
                         <label for="cantidad">Cantidad a llevar:</label>
-                        <input type="text" id="cantidad" name="cantidad" class="form-control w-100">
+                        <input type="text" id="cantidad" name="cantidad" class="form-control ">
                       </div>
+                      <br>
                       <input type="submit" class="btn btn-primary mt-3 w-100" value="Agregar al Carrito">
                   </div>
                 </form>
-                </div>
-              </div>
-            </div>
-          </div>
+                         
+            
+          
         </div>';
 
     } else {
