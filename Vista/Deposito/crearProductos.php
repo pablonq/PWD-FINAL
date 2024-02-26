@@ -28,7 +28,7 @@ include_once("../Estructuras/navSeguro.php");
                             <input type="text" class="form-control" name="imagenproducto" id="imagenproducto">
                         
                         <button type="submit" class="btn btn-primary btn-lg w-100 mt-3">Crear</button>
-                        <button type="submit" href="gestionarProductos.php" class="btn btn-danger btn-lg w-100 mt-3">CANCELAR</button>
+                        <button type="button" id="cerrarFormulario"  class="btn btn-danger btn-lg w-100 mt-3">CANCELAR</button>
                     </form>
                 
 </div>

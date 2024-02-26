@@ -144,29 +144,7 @@ class AbmCompraEstado{
         $fecha['idusuario'] = $compra->getObjUsuario()->getIdUsuario();
         verEstructura($fecha);
         $compraExitosa = $objCompra->modificar($fecha);
-       /*  $ItemComprados = new AbmCompraItem();
-        $idCompra['idcompra'] = $fecha['idcompra'];
-        $listaItems = $ItemComprados->buscar($idCompra);
-        verEstructura($listaItems);
-         //se modifica el stock en a base de datos, mover para deposito
-        $objProducto = new AbmProducto();
        
-        for ($i = 0; $i < count($listaItems); $i++){
-            $idUnItem['idproducto'] = $listaItems[$i]->getObjProducto()->getIdProducto();//id del item a comprar
-            //echo $idUnItem."<br>";
-            $productoGondola = $objProducto->buscar($idUnItem);
-            verEstructura($productoGondola);
-            $cantLlevar = $listaItems[$i]->getCiCantidad();
-            $stockGondola = $productoGondola[0]->getProCantstock();
-            $nuevoStock = $stockGondola - $cantLlevar;
-            $datosProductos['idproducto'] = $productoGondola[0]->getIdProducto();
-            $datosProductos['pronombre'] = $productoGondola[0]->getProNombre();
-            $datosProductos['prodetalle'] = $productoGondola[0]->getProDetalle();
-            $datosProductos['procantstock'] = $nuevoStock;
-            $datosProductos['tipo'] = $productoGondola[0]->getTipo();
-            $datosProductos['imagenproducto'] = $productoGondola[0]->getImagenProducto();
-            $objProducto->modificar($datosProductos);
-        } */
 
         if($compraExitosa){
             $objEstado = new AbmCompraEstado();
@@ -298,14 +276,6 @@ class AbmCompraEstado{
                 $exito = $cancelado->alta($param);
                 $resp = true;
                 
-                //Envia mail de la compra
-                /* $objCompraItem = new AbmCompraItem();
-                $objUsuario = new AbmUsuario();
-                $idUsuario = $compra->getIdUsuario();
-                $arrayUsuario = $objUsuario->buscar($idUsuario);
-                $nombreUsuario = $arrayUsuario->getUsNombre();
-                $mailUsuario = $arrayUsuario->getUsMail();
-                 */
             
                 echo "Envio realizado";
             }else{

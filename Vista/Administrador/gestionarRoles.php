@@ -4,21 +4,14 @@
 include_once('../../configuracion.php');
 $tituloPagina = "Gestionar Roles";
 include_once("../Estructuras/headSeguro.php");
-
 include_once("../Estructuras/navSeguro.php");
 
 $rol = new AbmRol();
 $listaRoles = $rol->buscar(null);
 ?>
 
-<div class="container mt-5 mb-5">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-header bg-dark text-white">
-                    <h4 class="mb-2 mt-2 text-center">Gestionar Roles</h4>
-                </div>
-                <div class="card-body">
+<div class="gestionarRoles">
+    
                     <?php
                     if (count($listaRoles) > 0) {
                         echo "<table class='table table-bordered'>";
@@ -37,17 +30,15 @@ $listaRoles = $rol->buscar(null);
                     <form action="action/altaRol.php" method="post">
                         <input type="text" name="idrol" id="idrol" hidden value="0">
 
-                        <div class="form-group">
+                        <div class="form-group text-center">
                             <label for="rodescripcion">NOMBRE DE ROL NUEVO:</label>
                             <input type="text" class="form-control" id="rodescripcion" name="rodescripcion"><br>
                         </div>
 
                         <button type="submit" class="btn btn-primary w-100">CREAR ROL</button>
+                        <button type="button" id="cerrarFormulario"  class="btn btn-danger btn-lg w-100 mt-3">CANCELAR</button>
                     </form>
-                </div>
-            </div>
-        </div>
-    </div>
+                
 </div>
 
 <?php

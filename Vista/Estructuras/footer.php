@@ -2,6 +2,7 @@
 <script src="../js/validarCrearCuenta.js"></script>
 <script src="../js/validarProductoCarrito.js"></script>
 <script src="../js/configuracionCuenta.js"></script>
+<script src="../js/cerrarFormulario.js"></script>
 <script src="https://sdk.mercadopago.com/js/v2"></script>
 <!-- Footer -->
 </body>

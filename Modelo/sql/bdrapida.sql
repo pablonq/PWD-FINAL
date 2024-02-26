@@ -41,7 +41,7 @@ INSERT INTO usuario (idusuario, usnombre, uspass, usmail, usdeshabilitado) VALUE
 ('4', 'Ramirez', '6562c5c1f33db6e05a082a88cddab5ea', 'ramirez@gmail.com', '0000-00-00 00:00:00'), -- 4567
 ('5', 'Admin', '81dc9bdb52d04dc20036dbd8313ed055', 'admin@mail.com', '0000-00-00 00:00:00'),-- 1234
 ('6', 'Deposito', '81dc9bdb52d04dc20036dbd8313ed055', 'deposito@mail.com', '0000-00-00 00:00:00'),-- 1234
-('7', 'Cliente', '81dc9bdb52d04dc20036dbd8313ed055', 'cliente@mail.com', '0000-00-00 00:00:00'),-- 1234
+('7', 'Cliente', '81dc9bdb52d04dc20036dbd8313ed055', 'navarropabloq@gmail.com', '0000-00-00 00:00:00'),-- 1234
 ('8', 'Nicolas', '81dc9bdb52d04dc20036dbd8313ed055', 'nicolas@mail.com', '0000-00-00 00:00:00'),-- 1234
 ('9', 'AdminTotal', '81dc9bdb52d04dc20036dbd8313ed055', 'adminTotal@mail.com', '0000-00-00 00:00:00');-- 1234
 

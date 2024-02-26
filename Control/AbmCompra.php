@@ -179,19 +179,7 @@ class AbmCompra{
      */
     public function crearCarrito($param){
         $resp = false;
-       /* $estadoCompra = new AbmCompraEstado();
-         if($this->alta($param)){
-            $compraUsuario = $this->buscar($param['idusuario']);
-            $objCompra = $compraUsuario[count($compraUsuario)-1];//seecciona a ultima compra
-            $array['idcompraestado'] = 0;
-            $array['idcompra'] = $objCompra->getIdCompra();
-            $array['idcompraestadotipo'] = 1;
-            $array['cefechaini'] = NULL;// date('Y-m-d H:i:s');//guarda la fecha de inicio?
-            $array['cefechafin'] = NULL;
-            if($estadoCompra->alta($array)){
-                $resp = true;
-            }
-        } */
+       
         
         return $resp;
     }

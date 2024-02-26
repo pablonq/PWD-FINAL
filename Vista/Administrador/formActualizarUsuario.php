@@ -5,7 +5,7 @@
 include_once('../../configuracion.php');
 $tituloPagina = "Gestionar Usuarios";
 include_once("../Estructuras/headSeguro.php");
-include_once("../Estructuras/banner.php");
+
 include_once("../Estructuras/navSeguro.php");
 $datos = data_submitted();
 $abmUsuario = new AbmUsuario();

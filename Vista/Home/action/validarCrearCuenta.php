@@ -23,7 +23,7 @@ if ($resultado){
 } else {
 
     if (count($colUsuarios) > 0){
-        $respuesta = array("resultado" => "error", "mensaje" => "El nombre de usuario ya se encuentra en uso.");
+        $respuesta = array("resultado" => "error", "mensaje" => "El nombre ya está en uso.");
     } else {
         $respuesta = array("resultado" => "error", "mensaje" => "No fue posible crear su cuenta.");
     }
@@ -31,21 +31,4 @@ if ($resultado){
 
 echo json_encode($respuesta);
 
-/* $usnombre = $datos['usnombre'];
-$usmail = $datos['usmail'];
-
-$param['usnombre'] = $usnombre;
-$param['usmail'] = $usmail;
-$param['idusuario'] = 0;
-$param['uspass'] = md5(123456);
-$param['usdeshabilitado'] = NULL;
-
-$objUsuario = new AbmUsuario();
-$resultado = $objUsuario->alta($param);// poner el resulstado de crear al usuario (true o false)
-$nuevaCompra = new AbmCompra();
-$aux['idcompra'] = 0;
-$aux['cofecha'] = null;
-$aux['idusuario'] = $idusuario;
-$nuevaCompra->alta($aux);
-$resp = true; */
 ?>
