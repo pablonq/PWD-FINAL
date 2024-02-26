@@ -24,7 +24,16 @@ include_once("../Estructuras/navSeguro.php");
     if (count($listaCompra) > 1) {
 
         echo "<table class='table table-bordered'>";
-        echo '<thead><tr><th style="width: 50px;">ID COMPRA</th><th style="width: 105px;">FECHA</th><th style="width: 100px;">ESTADO DE COMPRA</th><th style="width: 700px;" rowspan="2">ITEMS</th><th style="width: 100px;">PRECIO TOTAL</th><th style="width: 150px;">PROGRESO</th></tr></thead>';
+        echo '<thead>
+                    <tr>
+                      <th style="width: 50px;">ID COMPRA</th>
+                      <th style="width: 105px;">FECHA</th>
+                      <th style="width: 100px;">ESTADO DE COMPRA</th>
+                      <th style="width: 700px;" rowspan="2">ITEMS</th>
+                      <th style="width: 100px;">PRECIO TOTAL</th>
+                      <th style="width: 150px;">PROGRESO</th>
+                    </tr>
+              </thead>';
         echo '<tbody>';
 
         for ($i = 0; $i < count($listaCompra); $i++) {
@@ -85,9 +94,7 @@ include_once("../Estructuras/navSeguro.php");
 
                         echo '<tr>
                                 <td> -<b> ' . $producto->getProNombre() . '</b>.  Cant.: <b>'.$objCompraItem->getCiCantidad().'</b>.  Precio unit.: <b>$'.$producto->getProDetalle().'</b></td>
-                                
-                                
-                            </tr>';
+                              </tr>';
                     }
                     echo "</table>";
                     echo '<td class="robotoBold text-center"><b>$'.$total.'</b></td>';

@@ -14,7 +14,7 @@ require '../../vendor/autoload.php';
  */
 ?>
 
-<div class="container mt-4 mb-4">
+<div class="comprasDeposito">
     <?php
     $objAbmCompra = new AbmCompra();
     $objAbmEstado = new AbmCompraEstado();
@@ -22,13 +22,14 @@ require '../../vendor/autoload.php';
 
     if (count($listaCompra) > 0) {
         echo '<table class="table table-bordered">';
-        echo '<thead class="thead-light">
+        echo '<thead>
                 <tr>
-                    <th scope="col">ID DE COMPRA</th>
-                    <th scope="col">FECHA</th>
-                    <th scope="col">ESTADO DE COMPRA</th>
-                    <th scope="col">ITEMS</th>
-                    <th scope="col">OPCIONES DE COMPRA</th>
+                    <th style="width: 50px;">ID DE COMPRA</th>
+                    <th style="width: 105px;">FECHA</th>
+                    <th style="width: 100px;">ESTADO DE COMPRA</th>
+                    <th style="width: 700px;">ITEMS</th>
+                    <th style="width: 100px;">PRECIO TOTAL</th>
+                    <th style="width: 150px;">OPCIONES DE COMPRA</th>
                 </tr>
               </thead>';
         echo '<tbody>';
@@ -74,14 +75,8 @@ require '../../vendor/autoload.php';
                 $listaCompraItem = $objCompraItem->buscar($idCompra);
 
                 if (count($listaCompraItem) > 0) {
-                    echo '<table class="table table-bordered">
-                            <tr>
-                                <th>IMAGEN</th>
-                                <th>NOMBRE</th>
-                                <th>PRECIO POR UNIDAD</th>
-                                <th>CANTIDAD</th>
-                                <th>OPCIONES</th>
-                            </tr>';
+                    echo '<table>
+                    <tr></tr>';
 
                     $total = 0;
 
@@ -93,37 +88,32 @@ require '../../vendor/autoload.php';
                         $total = $total + ($producto->getProDetalle() * $objCompraItem->getCiCantidad());
 
                         echo '<tr>
-                                <td><img src=' . $producto->getImagenProducto() . ' width="60px"></td>
-                                <td>' . $producto->getProNombre() . '</td>
-                                <td> $' . $producto->getProDetalle() . '</td>
-                                <td>' . $objCompraItem->getCiCantidad() . '</td>';
-                        
+                                <td> - <b>' . $producto->getProNombre() . '</b>.   Cant.: <b>'.$objCompraItem->getCiCantidad().'</b>.  Precio unit.: <b>$'.$producto->getProDetalle().'</b></td>';
+                                
                         if($tipoEstado == "cancelada"){
                             echo '<td>Sin Acción</td>';
                         } else {
-                            echo '<td><a href="action/eliminarArticuloCompra.php?idcompraitem=' . $objCompraItem->getIdCompraItem() . '" class="btn btn-warning" >Quitar Producto</a></td>';
+                            echo '<td><a href="action/eliminarArticuloCompra.php?idcompraitem=' . $objCompraItem->getIdCompraItem() . '" class="btn btn-warning" >X</a></td>';
                         }
-                                
                         echo'</tr>';
                     }
-                    echo '<tr><td colspan="5" class="robotoBold">Total: $'.$total.'</td></tr>';
                     echo '</table>';
+                    echo '<td class="robotoBold"><b>$'.$total.'</b></td>';
                 }
 
                 echo '</td>
                       <td>';
                 
                 if ($tipoEstado == 'iniciada') {
-                    echo '<div class="d-block"> <a href="action/aceptarCompra.php?idcompra=' . $objCompra->getIdCompra() . '" class="btn btn-success w-100"  mr-2 >Aceptar Compra</a> 
-                          <a href="action/cancelarCompra.php?idcompra=' . $objCompra->getIdCompra() . '" class="btn btn-danger w-100" >Cancelar Compra</a> </div>';
+                    echo '<div class="d-block"> <a href="action/aceptarCompra.php?idcompra=' . $objCompra->getIdCompra() . '" class="btn btn-success w-100"  mr-2 >Aceptar</a>                 <a href="action/cancelarCompra.php?idcompra=' . $objCompra->getIdCompra() . '" class="btn btn-danger w-100" >Cancelar</a> </div>';
                 } elseif ($tipoEstado == 'aceptada') {
-                    echo '<div class="d-block"> <a href="action/enviarCompra.php?idcompra=' . $objCompra->getIdCompra() . '" class="btn btn-success w-100"  mr-2 >Enviar Compra</a> 
-                          <a href="action/cancelarCompra.php?idcompra=' . $objCompra->getIdCompra() . '" class="btn btn-danger w-100" >Cancelar Compra</a> </div>';
+                    echo '<div class="d-block"> <a href="action/enviarCompra.php?idcompra=' . $objCompra->getIdCompra() . '" class="btn btn-success w-100"  mr-2 >Enviar</a> 
+                          <a href="action/cancelarCompra.php?idcompra=' . $objCompra->getIdCompra() . '" class="btn btn-danger w-100" >Cancelar</a> </div>';
                           
 
 
                 } elseif ($tipoEstado == 'enviada') {
-                    echo '<div class="d-block"> <a href="action/cancelarCompra.php?idcompra=' . $objCompra->getIdCompra() . '" class="btn btn-danger w-100" >Cancelar Compra</a> </div>';
+                    echo '<div class="d-block"> <a href="action/cancelarCompra.php?idcompra=' . $objCompra->getIdCompra() . '" class="btn btn-danger w-100" >Cancelar</a> </div>';
                 } elseif ($tipoEstado == 'cancelada') {
                     echo 'CANCELADA';
                 }

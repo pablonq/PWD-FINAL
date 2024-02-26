@@ -61,8 +61,8 @@ $(document).ready(function () {
                         ].join('');
                         alertaMensajesElem.append(wrapper);
 
-                        //window.location.href = "carrito.php";
                         $("#formAgregarProducto")[0].reset();
+                        window.location.href = "carrito.php";
 
                     } else {
 

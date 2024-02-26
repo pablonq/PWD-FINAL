@@ -104,8 +104,8 @@ INSERT INTO producto (idproducto, pronombre, prodetalle, procantstock, tipo, ima
 /* Construccion */
 (01,'Arena m3','21000', 10,"Construccion","../img/Construccion/arena.jpg"),
 (02,'Cal x 30Kg','3000', 20,"Construccion","../img/Construccion/cal.png"),
-(03,'Cemento x 50Kg','5200', 30,"Construccion","../img/Construccion/cemento.png"),
-(04,'Pegamento Piso x 30Kg','3600', 40,"Construccion","../img/Construccion/construkor,jpg"),
+(03,'Cemento x 50Kg','5200', 30,"Construccion","../img/Construccion/cemento.jpg"),
+(04,'Pegamento Piso x 30Kg','3600', 40,"Construccion","../img/Construccion/construkor.jpg"),
 (05,'Pack Estribos 10 x 10 x 20uni','13000', 120,"Construccion","../img/Construccion/Estribos.png"),
 (06,'Hidrofugo x 20Kg','10200',140 ,"Construccion","../img/Construccion/hidrofugo.png"),
 (07,'Hierro 8 x 12mts','7500',1450 ,"Construccion","../img/Construccion/HIERRO.png"),
@@ -135,7 +135,7 @@ INSERT INTO producto (idproducto, pronombre, prodetalle, procantstock, tipo, ima
 (29,'Martillo Galponero','5600',50 ,"Herramientas","../img/Herramientas/martillo.png"),
 (30,'Maza 10Kg','11000',50 ,"Herramientas","../img/Herramientas/maza.png"),
 (31,'Nivel 15"','2400',25 ,"Herramientas","../img/Herramientas/nivel.png"),
-(32,'Pala Corazon','17800',20 ,"Herramientas","../img/Herramientas/pala.png"),
+(32,'Pala Corazon','17800',20 ,"Herramientas","../img/Herramientas/pala.jpg"),
 (33,'Serrucho Costilla','7500',32 ,"Herramientas","../img/Herramientas/serrucho.png");
 /* Plomeria */
 (34,'Caño Fusion Agua x 25mm','5600',200 ,"Plomeria","../img/Plomeria/canioFusionAgua.png"),
@@ -260,8 +260,8 @@ CREATE TABLE compra (
 ALTER TABLE `compra`
   ADD PRIMARY KEY (`idcompra`),
   ADD UNIQUE KEY `idcompra` (`idcompra`),
-  ADD KEY `fkcompra_1` (`idusuario`),
-  ADD KEY `fkcompra_2` (`identrega`),
+  ADD KEY `fkcompra_1` (`idusuario`);
+  
 
 --
 -- AUTO_INCREMENT de la tabla 'compra'
@@ -273,8 +273,8 @@ ALTER TABLE `compra`
 -- Filtros para la tabla 'compra'
 --
 ALTER TABLE `compra`
-  ADD CONSTRAINT `fkcompra_1` FOREIGN KEY (`idusuario`) REFERENCES `usuario` (`idusuario`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `fkcompra_2` FOREIGN KEY (`identrega`) REFERENCES `entrega` (`identrega`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `fkcompra_1` FOREIGN KEY (`idusuario`) REFERENCES `usuario` (`idusuario`) ON UPDATE CASCADE;
+  
 
 -- Volcado de datos de la tabla compra //cambiar los id compra y usuario
 INSERT INTO compra (idcompra, cofecha, idusuario) VALUES
@@ -452,32 +452,7 @@ INSERT INTO usuariorol (idusuario, idrol) VALUES
 (9,3); -- Cliente (AdminTotal/1234)
 
 -- ----------------------------------------------------------------------------------
---
--- Estructura de tabla para la tabla 'entrega'
---
-CREATE TABLE entega (
-  identrega bigint(20) NOT NULL,
-  nombre varchar(50) NOT NULL,
-  descripcion varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Indices de la tabla 'entrega'
---
-ALTER TABLE `entega`
-  ADD PRIMARY KEY (`identrega`),
-  ADD UNIQUE KEY `identega` (`identra`);
-
---
--- AUTO_INCREMENT de la tabla 'entrega'
---
-ALTER TABLE `entrega`
-  MODIFY `identrega` bigint(20) NOT NULL AUTO_INCREMENT;
-
--- Volcado de datos para la tabla rol
-INSERT INTO entrega (identrega, nombre, descripcion) VALUES
-(1, 'Retiro en sucursal', 'Retira el pedido en nuestra sucursal ubicada en Av Olascoaga 1620'),
-(2, 'Entrega a domicilio','Recibir el pedido en tu domicilio');
 -- ----------------------------------------------------------------------------------
 -- INFO datos truncados al ingresar fecha '0000-00-00 00:00:00' para timestamp
 

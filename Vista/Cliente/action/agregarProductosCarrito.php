@@ -8,11 +8,11 @@ $objCompraItem = new AbmCompraItem();
 $agregar = $objCompraItem->agregarProductoCarrito($datos);
 
 if($agregar){
-   //header('Location: ../productos.php');
-   $respuesta = array("resultado" => "exito", "mensaje" => "Agregado al carrito con éxito");
+  $respuesta = array("resultado" => "exito", "mensaje" => "Producto Agregado!");
 }else{
-    $respuesta = array("resultado" => "error", "mensaje" => "Error, cantidad máxima posible de este producto ya alcanzada en el carrito");
+  $respuesta = array("resultado" => "error", "mensaje" => "Error, cantidad máxima posible de este producto ya alcanzada en el carrito");
 }
+
 
 echo json_encode($respuesta);
 ?>

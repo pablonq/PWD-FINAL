@@ -10,17 +10,17 @@ $objAbmProducto = new AbmProducto();
 $listaProductos = $objAbmProducto->buscar(null);
 ?>
 
-<div class="container mt-4">
+<div class="gestionarProductos">
     <?php
     if (count($listaProductos) > 0) {
         echo '<table class="table table-bordered">';
         echo '<thead class="thead-light">
                 <tr>
-                    <th scope="col">IMAGEN</th>
-                    <th scope="col">NOMBRE PRODUCTO</th>
-                    <th scope="col">DETALLE PRODUCTO</th>
-                    <th scope="col">STOCK</th>
-                    <th scope="col">OPCIONES</th>
+                    <th style="width: 80px;">IMAGEN</th>
+                    <th style="width: 400px;">NOMBRE PRODUCTO</th>
+                    <th style="width: 80px;">PRECIO</th>
+                    <th style="width: 80px;">STOCK</th>
+                    <th style="width: 80px;">OPCIONES</th>
                 </tr>
               </thead>';
         echo '<tbody>';
@@ -32,7 +32,7 @@ $listaProductos = $objAbmProducto->buscar(null);
                     <td>' . $objProducto->getProNombre() . '</td>
                     <td> $' . $objProducto->getProDetalle() . '</td>
                     <td>' . $objProducto->getProCantstock() . '</td>
-                    <td><a href="modificarProductos.php?idproducto=' . $objProducto->getIdProducto() . '" class="btn btn-primary">Modificar Producto</a></td>
+                    <td><a href="modificarProductos.php?idproducto=' . $objProducto->getIdProducto() . '" class="btn btn-primary">Modificar</a></td>
                   </tr>';
         }
         echo '</tbody>';

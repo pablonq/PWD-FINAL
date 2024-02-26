@@ -19,30 +19,30 @@ $busquedaProducto = $abmProducto->buscar($datos);
          
         echo '
                 <!-- Zona de alerta -->
-                <div id="alertaMensajes">
-                </div>
                 <form name="formAgregarProducto" id="formAgregarProducto" method="POST" class="text-center needs-validation">
-                  <img src='. $producto->getImagenProducto().' alt="Product Image">
-                  <br>
-                  <br>
-                  <br>
-                  <h4 class="text-center">'.$producto->getProNombre().'</h4>
-                  <div class="inputs text-center">
-                    <input type="hidden" name="idproducto" id="idproducto"  value='; echo $producto->getIdProducto(); echo '>
-               
-                    <input type="hidden" id="pronombre" name="pronombre"  value='; echo $producto->getProNombre(); echo '>
-                    <label for="prodetalle" class="text-center">Precio:</label>
-                    <input type="text" id="prodetalle" name="prodetalle"  value=$'. $producto->getProDetalle().'>
-                    
-                    <input type="hidden" id="cicantidad" name="cicantidad"  value='; echo $producto->getProCantstock(); echo '>
-                    <br>
-                    <div class="text-center">
-                        <label for="cantidad">Cantidad a llevar:</label>
-                        <input type="text" id="cantidad" name="cantidad" class="form-control ">
-                      </div>
-                      <br>
-                      <input type="submit" class="btn btn-primary mt-3 w-100" value="Agregar al Carrito">
-                  </div>
+                <img src='. $producto->getImagenProducto().' alt="Product Image">
+                <br>
+                <br>
+                <br>
+                <h4 class="text-center">'.$producto->getProNombre().'</h4>
+                <div class="inputs text-center">
+                <input type="hidden" name="idproducto" id="idproducto"  value='; echo $producto->getIdProducto(); echo '>
+                
+                <input type="hidden" id="pronombre" name="pronombre"  value='; echo $producto->getProNombre(); echo '>
+                <label for="prodetalle" class="text-center">Precio:</label>
+                <input type="text" id="prodetalle" name="prodetalle"  value=$'. $producto->getProDetalle().'>
+                
+                <input type="hidden" id="cicantidad" name="cicantidad"  value='; echo $producto->getProCantstock(); echo '>
+                <br>
+                <div class="text-center">
+                <label for="cantidad">Cantidad a llevar:</label>
+                <input type="text" id="cantidad" name="cantidad" class="form-control ">
+                </div>
+                <br>
+                <input type="submit" class="btn btn-primary mt-3 w-100" value="Agregar al Carrito">
+                </div>
+                <div id="alertaMensajes" class="text-sm">
+                </div>
                 </form>
                          
             
