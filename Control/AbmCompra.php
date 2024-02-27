@@ -2,12 +2,7 @@
 
 class AbmCompra{
 
-    /*
-    ATRIBUTOS:
-    'idcompra'
-    'cofecha'
-    'idusuario' <-- corresponde un objeto Usuario
-    */
+    
 
     /**
      * Espera como parametro un arreglo asociativo donde las claves coinciden con los nombres 

@@ -2,11 +2,7 @@
 
 class AbmMenuRol{
 
-    /*
-    ATRIBUTOS:
-    'idmenu' <-- corresponde un obejto Menu
-    'idrol' <-- corresponde un objeto Rol
-    */
+   
 
     /**
      * Espera como parametro un arreglo asociativo donde las claves coinciden con los nombres 
