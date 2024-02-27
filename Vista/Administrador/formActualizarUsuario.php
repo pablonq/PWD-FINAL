@@ -14,42 +14,28 @@ $objUsuario = $listaUsuario[0];
 
 ?>
 
-<div class="container mt-4 mb-4">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-header bg-dark text-white">
-                    <h4 class="mb-2 mt-2 text-center">Actualizar Usuario</h4>
-                </div>
-                <div class="card-body">
-                    <form action="action/actualizarUsuarios.php" method="post">
-                        <div class="form-group">
-                            <label for="idusuario">ID:</label>
-                            <input type="text" class="form-control" id="idusuario" name="idusuario" value='<?php echo $objUsuario->getIdUsuario() ?>' readonly>
-                        </div>
-                        <div class="form-group">
-                            <label for="usnombre">NOMBRE:</label>
-                            <input type="text" class="form-control" id="usnombre" name="usnombre" value='<?php echo $objUsuario->getUsNombre() ?>'>
-                        </div>
-                        <div class="form-group">
-                            <label for="usmail">E-MAIL:</label>
-                            <input type="text" class="form-control" id="usmail" name="usmail" value='<?php echo $objUsuario->getUsMail() ?>'>
-                        </div>
-                        <div class="form-group">
-                            <!--<label for="uspass">CONTRASEÑA:</label>-->
-                            <input type="text" class="form-control" id="uspass" name="uspass" value='<?php echo $objUsuario->getUsPass() ?>' hidden>
-                        </div>
-                        <div class="form-group">
-                            <label for="usdeshabilitado">HABILITAR:</label>
-                            <input type="text" class="form-control" id="usdeshabilitado" name="usdeshabilitado" value='<?php echo $objUsuario->getUsDeshabilitado() ?>'>
-                        </div>
-                        <br>
-                        <button type="submit" class="btn btn-primary w-100">ACTUALIZAR</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
+<div class="actualizarUsuario">
+    <form action="action/actualizarUsuarios.php" method="post">
+      <h4 class="mb-2 mt-2 text-center">Actualizar Usuario</h4>
+          
+      <input type="hidden" class="form-control" id="idusuario" name="idusuario" value='<?php echo $objUsuario->getIdUsuario() ?>' readonly>
+    
+      <label for="usnombre">NOMBRE:</label>
+      <input type="text" class="form-control" id="usnombre" name="usnombre" value='<?php echo $objUsuario->getUsNombre() ?>'>
+    
+      <label for="usmail">E-MAIL:</label>
+      <input type="text" class="form-control" id="usmail" name="usmail" value='<?php echo $objUsuario->getUsMail() ?>'>
+    
+      <!--<label for="uspass">CONTRASEÑA:</label>-->
+      <input type="text" class="form-control" id="uspass" name="uspass" value='<?php echo $objUsuario->getUsPass() ?>' hidden>
+    
+      <label for="usdeshabilitado">HABILITAR:</label>
+      <input type="text" class="form-control" id="usdeshabilitado" name="usdeshabilitado" value='<?php echo $objUsuario->getUsDeshabilitado() ?>'>
+      <br>
+      <button type="submit" class="btn btn-primary w-100">ACTUALIZAR</button>
+      <button type="button" id="cerrarFormulario"  class="btn btn-danger btn-lg w-100 mt-3">CANCELAR</button>
+    </form>
+          
 </div>
 
 <?php

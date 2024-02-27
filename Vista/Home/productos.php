@@ -2,7 +2,6 @@
 include_once("../../configuracion.php");
 $tituloPagina = "Productos";
 include_once("../Estructuras/headInseguro.php");
-
 include_once("../Estructuras/navInseguro.php");
 ?>
 
