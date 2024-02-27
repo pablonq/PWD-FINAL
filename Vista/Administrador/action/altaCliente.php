@@ -6,7 +6,7 @@ $usuario = new AbmUsuario();
 $resp = $usuario->crearUsuarioAdmin($datos);
 //verEstructura($datos);
 if($resp){
-    header('Location: ../crearUsuarios.php');
+    header('Location: ../gestionarUsuarios.php');
 }else{
     header('Location: ../crearUsuarios.php');
 }

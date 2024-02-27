@@ -4,7 +4,7 @@
 include_once('../../configuracion.php');
 $tituloPagina = "Gestionar Usuarios";
 include_once("../Estructuras/headSeguro.php");
-include_once("../Estructuras/banner.php");
+
 include_once("../Estructuras/navSeguro.php");
 $idUsuario = data_submitted(); //recibo el id del usuario
 //verEstructura($idUsuario);
@@ -18,15 +18,10 @@ $listaRoles = $rol->buscar(null);
 
 ?>
 
-    <div class="container mt-4 mb-4">
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-header bg-dark text-white">
-                        <h4 class="mb-2 mt-2 text-center">Asignar Rol</h4>
-                    </div>
-                    <div class="card-body">
+    <div class="asignarRol">
+        
                         <form action="action/asignarRol.php" method="post">
+                          <h4 class="mb-2 mt-2 text-center">Asignar Rol</h4>
                             <?php
                             if (count($listaRoles) > 0) {
                                 echo "<div class='form-group'>";
@@ -41,17 +36,14 @@ $listaRoles = $rol->buscar(null);
                                     echo "</div>";
                                 }
                                 echo "</div>";
-                                echo '<button type="submit" class="btn btn-primary mt-2">Asignar Roles</button>';
+                                echo '<button type="submit" class="btn btn-primary mt-2 w-100">Asignar Roles</button>
+                                <button type="button" id="cerrarFormulario"  class="btn btn-danger btn-lg w-100 mt-3">CANCELAR</button>';
                             } else {
                                 echo "<p>No se encontraron Roles</p>";
                             }
                             ?>
                         </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+                    
 </div>
 
 <?php

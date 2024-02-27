@@ -3,7 +3,6 @@
 include_once('../../configuracion.php');
 $tituloPagina = "Crear Usuarios";
 include_once("../Estructuras/headSeguro.php");
-
 include_once("../Estructuras/navSeguro.php");
 
 $datos = data_submitted();
@@ -27,10 +26,10 @@ $listaRoles = $rol->buscar(null);
     <label for="usmail">E-Mail:</label>
     <input type="email" class="form-control mb-3" id="usmail" name="usmail" required>
     <?php
-    //Implementar a futuro
-    for($i=0; $i < count($listaRoles); $i++){
+    
+    /* for($i=0; $i < count($listaRoles); $i++){
     $objRol = $listaRoles[$i];
-    }
+    } */
     ?>
     <input type="checkbox" class="form-check-input" id="cliente" name="Cliente" value="Cliente">
     <label class="form-check-label mb-3" for="cliente">Cliente</label>

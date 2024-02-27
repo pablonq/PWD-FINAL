@@ -579,3 +579,24 @@ form .h2{
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   
 }
+.asignarRol{
+  margin-top: 80px;
+  position:absolute;
+  margin-left: 700px;
+  background-image: url('../img/administracion.jpg');
+  background-size: cover; /* Para cubrir todo el fondo */
+  background-position: center; /* Para centrar la imagen */
+}
+.asignarRol form{
+  background-image: linear-gradient(to bottom, #0a4275,#0b2241); /* Color de fondo con transparencia */
+  width: 470px;
+  height: 600px;
+  backdrop-filter: blur(5px); /* Aplicar desenfoque al fondo */
+  
+  color: #fff;
+  border-radius: 8px;
+  
+  font-size: 1.3em;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  
+}
