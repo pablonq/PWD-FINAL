@@ -5,10 +5,7 @@ $datos = data_submitted(); //idCompra
 //verEstructura($datos);
 
 $objEstado = new AbmCompraEstado();
-/*  $param['idcompra'] = $datos;
-    $param['idcompraestadotipo'] = 1;
-    $param['cefechafin'] = null;
-    $exito = $objEstado->buscar($param); */
+
 
 
 $cambioRealizado = $objEstado->cancelarCompra($datos);
