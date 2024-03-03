@@ -128,6 +128,8 @@ class AbmCompraItem{
     /**
      * Agrega Productos al carrito
      * Recibe un Array con el id del usuario y los datos del prodcuto
+     * @param array $datos
+     * @return boolean
      */
     public function agregarProductoCarrito($datos){
         $resp = false;
@@ -153,7 +155,7 @@ class AbmCompraItem{
         $paramCompraItem['idcompra'] = $compra->getIdCompra();
         $colCompraItem = $abmCompraItem->buscar($paramCompraItem);
 
-        if(count($colCompraItem) > 0){
+        if(count($colCompraItem) > 0){  
 
             $cantidad1 = $datos['cantidad'];//Recibimos del item nuevo a sumar al carrito
             $cantidad2 = $colCompraItem[0]->getCiCantidad();

@@ -24,12 +24,12 @@ $(document).ready(function () {
             error.addClass("invalid-feedback");
             element.closest(".contenedor-dato").append(error);
         },
-        highlight: function (element) {
+       /*  highlight: function (element) {
             $(element).addClass("is-invalid").removeClass("is-valid");
         },
         unhighlight: function (element) {
             $(element).removeClass("is-invalid").addClass("is-valid");
-        },
+        }, */
 
         submitHandler: function(form){
             

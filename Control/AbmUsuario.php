@@ -277,7 +277,12 @@ class AbmUsuario
         }
         return $resp;
     }
-
+/**
+     * Recibe un arreglo que contiene nombre y mail
+     * Asigna una contraseña, da de alta ese usuario nuevo y devuelve true o false segun el caso
+     * @param array $datos
+     * @return boolean
+     */
     public function crearUsuario($datos){
         $resp = false;
         $usnombre = $datos['usnombre'];

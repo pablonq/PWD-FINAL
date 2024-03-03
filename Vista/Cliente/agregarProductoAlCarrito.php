@@ -40,6 +40,7 @@ $busquedaProducto = $abmProducto->buscar($datos);
                 </div>
                 <br>
                 <input type="submit" class="btn btn-primary mt-3 w-100" value="Agregar al Carrito">
+                
                 </div>
                 <div id="alertaMensajes" class="text-sm">
                 </div>
