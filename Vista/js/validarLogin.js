@@ -20,7 +20,7 @@ $(document).ready(function () {
         },
         errorElement: "span",
 
-        errorPlacement: function (error, element) {
+        /* errorPlacement: function (error, element) {
 
             var elementosRepetidos2 = document.querySelectorAll(".captcha-incorrecto");
             elementosRepetidos2.forEach(function(elemento2) {
@@ -35,7 +35,7 @@ $(document).ready(function () {
         },
         unhighlight: function (element) {
             $(element).removeClass("is-invalid").addClass("is-valid");
-        },
+        }, */
 
         submitHandler: function(form){
 
