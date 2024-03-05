@@ -128,7 +128,8 @@ class Session {
     }
 
     /**
-     * Redirecciona al usuario hacia la página principal
+     * Redirecciona al usuario hacia la página principal.
+     * Obtiene la ruta absoluta del archivo que se está ejecutando "$_SERVER['PHP_SELF']" y verfica la direccion padre.
      */
     public function redireccionar(){
         $rutaArchivo = $_SERVER['PHP_SELF']; //Retorna un string con la ruta absoluta del archivo donde se está abriendo

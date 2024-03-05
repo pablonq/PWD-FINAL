@@ -187,8 +187,7 @@ class AbmCompra{
      */
     public function buscarCarrito($idUsuario){
         $compra = new Compra();
-        $sql = "idusuario = ".$idUsuario. " AND 
-        NOT EXISTS (
+        $sql = "idusuario = ".$idUsuario. " AND NOT EXISTS (
         SELECT * FROM compraestado WHERE compraestado.idcompra = compra.idcompra);";
        // echo $sql."<br>";
         $carrito = $compra->listar($sql);//devuelve 1 carrito sin relacion a compraestado

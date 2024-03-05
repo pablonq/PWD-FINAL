@@ -34,12 +34,9 @@ $listaCompraItem = $objCompraItem->buscar($idUCompra);
 
 //SDK de mercadopago
 require '../../vendor/autoload.php';
- 
+
 //Agrega credenciales
-
 MercadoPago\SDK::setAccessToken('TEST-1323948781483767-020715-1d49ac76392fec760ea8bd8d320dbfc3-1673270882');
-
-
 ?>
 
 

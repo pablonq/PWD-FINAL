@@ -2,7 +2,6 @@
 include_once('../../configuracion.php');
 $tituloPagina = "Agregar Productos";
 include_once("../Estructuras/headSeguro.php");
-
 include_once("../Estructuras/navSeguro.php");
 
 $datos = data_submitted();

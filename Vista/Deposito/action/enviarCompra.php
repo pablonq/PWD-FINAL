@@ -1,6 +1,5 @@
 <?php
 require '../../../vendor/autoload.php';
-
 include_once ("../../../configuracion.php");
 //pasa el carrito al estado iniciada
 $datos = data_submitted();//idCompra
@@ -24,6 +23,9 @@ $mail = new PHPMailer(true);
 
 if($enviada){
   header("Location: ../gestionarCompras.php");
+ /*  $ObjMail = new Mail();
+  $enviarMail = $ObjMail->enviarCorreo($mailUsuario, $nombreUsuario); */
+
   
   try {
     

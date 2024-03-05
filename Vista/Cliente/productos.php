@@ -2,7 +2,6 @@
 include_once("../../configuracion.php");
 $tituloPagina = "Productos";
 include_once("../Estructuras/headSeguro.php");
-
 include_once("../Estructuras/navSeguro.php");
 ?>
 
@@ -37,7 +36,7 @@ include_once("../Estructuras/navSeguro.php");
             echo "</div>";
             echo "</div>";
         }
-        /* echo "</div>"; */
+        
 
     } else {
 

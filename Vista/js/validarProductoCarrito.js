@@ -84,9 +84,7 @@ $(document).ready(function () {
         }
     });
 
-    $("#actualizarCaptchaCrearCuenta").on("click", function() {
-        $("#imgCaptchaCrearCuenta").attr("src", "../../Control/captchaCrearCuenta.php?r=" + Math.random());
-    });
+    
 });
 
 jQuery.validator.addMethod("esEntero", function (value, element) {

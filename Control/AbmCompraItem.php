@@ -127,7 +127,7 @@ class AbmCompraItem{
 
     /**
      * Agrega Productos al carrito
-     * Recibe un Array con el id del usuario y los datos del prodcuto
+     * Recibe un Array con el id del usuario y los datos del producto.
      * @param array $datos
      * @return boolean
      */

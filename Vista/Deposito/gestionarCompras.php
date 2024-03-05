@@ -91,7 +91,7 @@ require '../../vendor/autoload.php';
                                 <td> - <b>' . $producto->getProNombre() . '</b>.   Cant.: <b>'.$objCompraItem->getCiCantidad().'</b>.  Precio unit.: <b>$'.$producto->getProDetalle().'</b></td>';
                                 
                         if($tipoEstado == "cancelada"){
-                            echo '<td>Sin Acción</td>';
+                            echo '<td></td>';
                         } else {
                             echo '<td><a href="action/eliminarArticuloCompra.php?idcompraitem=' . $objCompraItem->getIdCompraItem() . '" class="btn btn-warning" >X</a></td>';
                         }
