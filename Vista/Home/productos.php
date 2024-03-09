@@ -31,7 +31,11 @@ include_once("../Estructuras/navInseguro.php");
             echo "<div class='card_footer'>";
               echo "<span class='text_title'> $". $listaProd[$i]->getProDetalle()."</span>";
               echo "<div class='card_button'>";
+              if($rol!=null){
+                echo "<a href='../Cliente/agregarProductoAlCarrito.php?idproducto=".$listaProd[$i]->getIdProducto()."' ><i class='svg_icon bi bi-cart-check-fill'></i></a>";  
+              }else{
               echo "<a href='Home.php' ><i class='svg_icon bi bi-cart-check-fill'></i></a>";
+              }
               echo "</div>";
             echo "</div>";
             echo "</div>";

@@ -118,11 +118,30 @@ class Session {
         $rutaArchivo = $_SERVER['PHP_SELF']; //Retorna un string con la ruta absoluta del archivo donde se está abriendo
         $colDireccionesRuta = explode("/", $rutaArchivo); //Separa una sentencia por una letra o simbolo dado y retorna un array
         $direccionMenu = $colDireccionesRuta[count($colDireccionesRuta) - 1];
+        /*---test---*/
+        
+        $menues = $this->getColMenu();
+        $colMenu = [];
+        for ($i=0; $i < count($menues); $i++){//Consigo la colección de Menus
+        $colMenu[] = $menues[$i]->getmeDescripcion();
+        }
+        $i=0;
+        do{
+          if($colMenu[$i]===$direccionMenu){
+            $resp=true;
+            break;
+          }
+          $i++;
+          } while ($i<count($colMenu));
 
-        $objMenuRol = new MenuRol();
+        
+      
+        /*---test---*/
+
+        /* $objMenuRol = new MenuRol();
         if ($objMenuRol->verificarPermiso($_SESSION["idusuario"], $direccionMenu)) {
             $resp = true;
-        }
+        } */
 
         return $resp;
     }

@@ -1,8 +1,11 @@
 <?php
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
 class Mail extends PHPMailer {
 
 public function enviarCorreo($mailUsuario, $nombreUsuario) {
-    try {
+   
         $this->SMTPDebug = 2;                                     //Activacion salida errores
         $this->isSMTP();                                          //Enviar usando protocolo SMTP
         $this->Host       = 'smtp.gmail.com';                     //Host
@@ -23,13 +26,14 @@ public function enviarCorreo($mailUsuario, $nombreUsuario) {
         $this->isHTML(true);                                  //Formato email
         $this->Subject = 'Tu Compra esta en camino';         //Asunto
         $this->Body = 'Hola <b>'.$nombreUsuario.'!</b>, Gracias por tu compra. Ya está en camino a tu domicilio.<br> FERRETERIA CHANETON'; //Mensaje
-        $this->send();
-        $respuesta = "enviado";
+       /*  $this->send(); */
+        $resp = true;
+        if (!$this->send()){
+          $resp=false;
+        }
+        return $resp;
 
-    } catch (Exception $e) {
-        $respuesta = "Error al enviar: {$this->ErrorInfo}";
-    }
-    return $respuesta;
+    
 }
 }
 ?>

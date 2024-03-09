@@ -218,6 +218,22 @@ class Compra {
         return $info;
     }
 
+    /**
+     * Recibe un id de usuario y retorna una colección de objeto 
+     * compra que no posea un estado de ese usuario.
+     * @param int $idUsuario
+     * @return array
+     */
+    public function buscarCarro($idUsuario){
+      
+      $sql = "idusuario = ".$idUsuario. " AND NOT EXISTS (
+      SELECT * FROM compraestado WHERE compraestado.idcompra = compra.idcompra);";
+     // echo $sql."<br>";
+      $carro = $this->listar($sql);//devuelve 1 carrito sin relacion a compraestado
+      
+      return $carro;
+  }
+
 }
 
 ?>
