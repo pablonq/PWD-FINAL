@@ -1,5 +1,5 @@
 <?php
-require '../vendor/autoload.php';
+/* require '../vendor/autoload.php'; */
 class merkPago {
   
   public function pagar($items, $arrayRedireccion){
@@ -9,6 +9,8 @@ class merkPago {
   $preference->back_urls = $arrayRedireccion;
   $preference->save();
 
+  return $preference->id;
 }
+
 }
 ?>

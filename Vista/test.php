@@ -1,9 +1,10 @@
   <?php
   include_once("../configuracion.php");
   require ("../vendor/autoload.php");
-  MercadoPago\SDK::initialize();
+   MercadoPago\SDK::initialize();
   $objPago = new merkPago();
-  $preference = new MercadoPago\Preference();
+  /* MercadoPago\SDK::setAccessToken('TEST-1323948781483767-020715-1d49ac76392fec760ea8bd8d320dbfc3-1673270882'); */
+  /* $preference = new MercadoPago\Preference(); */
   $item = new MercadoPago\Item();
           $item->id = 3;
           $item->title = "destornillador";
@@ -18,8 +19,12 @@
             "failure" => "http://localhost/PWD/PWD-FINAL/Vista/Cliente/action/carrito.php",
             "pending" => "http://localhost/PWD/PWD-FINAL/Vista/Cliente/action/pagoCompra.php?idusuario="
           );
-
+          /* $preference->items = array($item);
+          $preference->save();  */
           $pagar = $objPago->pagar($items, $arrayRedireccion);
+          echo $pagar;
+
+    
           ?>
           <!DOCTYPE html>
           <html lang="es">
@@ -29,8 +34,9 @@
             <title>Document</title>
             <script src="https://sdk.mercadopago.com/js/v2"></script>     
           </head>
-<div class="checkout-btn"></div>
+          
           <body>
+            <div class="checkout-btn"></div>
             
         <script>
           
@@ -43,18 +49,21 @@
   const checkout = mp.checkout({
    
    preference:{
-     id:'<?php $preference->id;?>'
+     id:'<?php echo $pagar;?>'
     },
     
     render: {
       container: '.checkout-btn',
       label: 'PAGAR'
     }
+    
+    
+    
   });
-
+  
  
   </script>
-  <a href="<?php echo $preference->init_point;?>"> PAGAR</a>   
+    
           </body>
           </html>
          

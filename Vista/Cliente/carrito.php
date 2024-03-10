@@ -3,20 +3,19 @@ include_once("../../configuracion.php");
 $tituloPagina = "Su Carrito de Compras";
 include_once("../Estructuras/headSeguro.php");
 include_once("../Estructuras/navSeguro.php");
-require '../../vendor/autoload.php';
 
 $idUsuario = $session->getIdUsuario();
 $objCompra = new AbmCompra();
 $busquedaCompra = $objCompra->buscarCarrito($idUsuario);
 
 if($busquedaCompra == null){
-
+  
   $objAbmNuevaCompra = new AbmCompra();
   $paramCompra['idcompra'] = 0;
   $paramCompra['cofecha'] = '0000-00-00 00:00:00';
   $paramCompra['idusuario'] = $idUsuario;
   $paramCompra['identrega'] = null;
-
+  
   $objAbmNuevaCompra->alta($paramCompra);
   $busquedaCompra = $objAbmNuevaCompra->buscarCarrito($idUsuario);
 }
@@ -34,6 +33,7 @@ $objProducto = new AbmProducto();
 $listaCompraItem = $objCompraItem->buscar($idUCompra);
 
 //SDK de mercadopago
+require '../../vendor/autoload.php';
 
 
 MercadoPago\SDK::initialize();
@@ -111,7 +111,7 @@ MercadoPago\SDK::initialize();
   const checkout = mp.checkout({
    
    preference:{
-     id:'<?php echo $preference->id; ?>'
+     id:'<?php echo $pagar; ?>'
     },
     
     render: {
