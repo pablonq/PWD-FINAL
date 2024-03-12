@@ -4,7 +4,7 @@ use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 class Mail extends PHPMailer {
 
-public function enviarCorreo($mailUsuario, $nombreUsuario) {
+public function enviarCorreo($mailUsuario, $nombreUsuario, $asunto, $body) {
    
         $this->SMTPDebug = 2;                                     //Activacion salida errores
         $this->isSMTP();                                          //Enviar usando protocolo SMTP
@@ -24,8 +24,8 @@ public function enviarCorreo($mailUsuario, $nombreUsuario) {
 
         //Contenido
         $this->isHTML(true);                                  //Formato email
-        $this->Subject = 'Tu Compra esta en camino';         //Asunto
-        $this->Body = 'Hola <b>'.$nombreUsuario.'!</b>, Gracias por tu compra. Ya está en camino a tu domicilio.<br> FERRETERIA CHANETON'; //Mensaje
+        $this->Subject = $asunto;         //Asunto
+        $this->Body = $body; //Mensaje
        /*  $this->send(); */
         $resp = true;
         if (!$this->send()){
