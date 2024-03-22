@@ -1,10 +1,12 @@
 <?php
 include_once ("../../../configuracion.php");
+require '../../../vendor/autoload.php';
 //pasa el carrito al estado iniciada
 $datos = data_submitted();//idCompra
-//verEstructura($datos);
+/* verEstructura($datos); */
 $objEstado = new AbmCompraEstado();
 $compraAceptada = $objEstado->aceptarCompra($datos);
+var_dump ($datos);
 
 $objCompra = new AbmCompra();
 $arrayCompra = $objCompra->buscar($datos);
@@ -17,8 +19,8 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 $mail = new PHPMailer(true);  
-$body = 'Hola <b>'.$nombreUsuario.'!</b>, Te queriamos avisar que tu compra a sido <b>ACEPTADA!</b>. Te informaremos a la brevedad como avanza tu compra.<br> FERRETERIA CHANETON';
-$asunto = 'Estado de tu compra';
+$body = $datos['body'];  //cuerpo del
+$asunto = $datos['asunto'];
 
 if($compraAceptada){
 

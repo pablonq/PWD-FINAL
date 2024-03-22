@@ -104,14 +104,39 @@ require '../../vendor/autoload.php';
                 echo '</td>
                       <td>';
                 
-                if ($tipoEstado == 'iniciada') {
-                    echo '<div class="d-block"> <a href="action/aceptarCompra.php?idcompra=' . $objCompra->getIdCompra() . '" class="btn btn-success w-100"  mr-2 >Aceptar</a>                 <a href="action/cancelarCompra.php?idcompra=' . $objCompra->getIdCompra() . '" class="btn btn-danger w-100" >Cancelar</a> </div>';
+                      $body = 'Hola <b>'.$objCompra->getObjUsuario()->getUsNombre().'!</b>, Te queriamos avisar que tu compra a sido <b>ACEPTADA!</b>. Te informaremos a la brevedad como avanza tu compra.<br> <b>FERRETERIA CHANETON</b>';
+                      $asunto = 'Estado de tu compra';
+                      $url = "action/aceptarCompra.php?";
+                      $url .= "idcompra=" . urlencode($objCompra->getIdCompra()); // Usar urlencode para asegurar que los valores sean válidos en la URL
+                      $url .= "&body=" . urlencode($body);
+                      $url .= "&asunto=" . urlencode($asunto);
+                      
+                      $bodyCancelar = 'Hola <b>'.$objCompra->getObjUsuario()->getUsNombre().'!</b>, Lamentablemente tu compra a sido <b>CANCELADA</b>. A la brevedad nos estaremos comunicando telefonicamente para dar explicaciones de la situaci´n de tu compra. Saludos.<br> <b>FERRETERIA CHANETON</b>';
+                      $asuntoCancelar = 'Noticias sobre tu compra';
+                      $urlCancelar = "action/cancelarCompra.php?";
+                      $urlCancelar .= "idcompra=" . urlencode($objCompra->getIdCompra()); // Usar urlencode para asegurar que los valores sean válidos en la URL
+                      $urlCancelar .= "&body=" . urlencode($bodyCancelar);
+                      $urlCancelar .= "&asunto=" . urlencode($asuntoCancelar);
+
+                      $bodyEnviar = 'Hola <b>'.$objCompra->getObjUsuario()->getUsNombre().'!</b>, Gracias por tu compra. Ya está en camino a tu domicilio.<br> FERRETERIA CHANETON';
+                      $asuntoEnviar = 'Tu Compra esta en camino';
+                      $urlEnviar = "action/enviarCompra.php?";
+                      $urlEnviar .= "idcompra=" . urlencode($objCompra->getIdCompra()); // Usar urlencode para asegurar que los valores sean válidos en la URL
+                      $urlEnviar .= "&body=" . urlencode($bodyEnviar);
+                      $urlEnviar .= "&asunto=" . urlencode($asuntoEnviar);
+
+                if 
+                ($tipoEstado == 'iniciada') {
+                    echo '<div class="d-block"> <a href='.$url.' class="btn btn-success w-100"  mr-2 >Aceptar</a>
+                        <a href='.$urlCancelar.' class="btn btn-danger w-100" >Cancelar</a> </div>';
+
                 } elseif ($tipoEstado == 'aceptada') {
-                    echo '<div class="d-block"> <a href="action/enviarCompra.php?idcompra=' . $objCompra->getIdCompra() . '" class="btn btn-success w-100"  mr-2 >Enviar</a> 
-                          <a href="action/cancelarCompra.php?idcompra=' . $objCompra->getIdCompra() . '" class="btn btn-danger w-100" >Cancelar</a> </div>';
+                    echo '<div class="d-block"> <a href='.$urlEnviar.' class="btn btn-success w-100"  mr-2 >Enviar</a> 
+                    <a href='.$urlCancelar.' class="btn btn-danger w-100" >Cancelar</a> </div>';
 
                 } elseif ($tipoEstado == 'enviada') {
-                    echo '<div class="d-block"> <a href="action/cancelarCompra.php?idcompra=' . $objCompra->getIdCompra() . '" class="btn btn-danger w-100" >Cancelar</a> </div>';
+                    echo '<div class="d-block"> 
+                    <a href='.$urlCancelar.' class="btn btn-danger w-100" >Cancelar</a> </div>';
                 } elseif ($tipoEstado == 'cancelada') {
                     echo 'CANCELADA';
                 }

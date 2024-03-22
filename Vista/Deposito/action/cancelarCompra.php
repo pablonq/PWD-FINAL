@@ -1,5 +1,6 @@
 <?php
 include_once ("../../../configuracion.php");
+require '../../../vendor/autoload.php';
 //pasa el carrito al estado iniciada
 $datos = data_submitted();//idCompra
 verEstructura($datos);
@@ -17,11 +18,14 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 $mail = new PHPMailer(true);  
-$body = 'Hola <b>'.$nombreUsuario.'!</b>, Lamentablemente tu compra a sido <b>CANCELADA</b>. A la brevedad nos estaremos comunicando telefonicamente para dar explicaciones de la situaci´n de tu compra. Saludos.<br> <b>FERRETERIA CHANETON</b>';
-$asunto = 'Noticias sobre tu compra';
+$body = $datos['body'];
+$asunto = $datos['asunto'];
 
 if($cancelado){
-    header("Location: ../gestionarCompras.php"); 
+  header("Location: ../gestionarCompras.php");
+  $ObjMail = new Mail();
+  $enviarMail = $ObjMail->enviarCorreo($mailUsuario, $nombreUsuario, $asunto, $body);
+
 }else{
     header("Location: ../gestionarCompras.php"); 
 }

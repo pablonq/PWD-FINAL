@@ -2,7 +2,11 @@
 include_once("../../configuracion.php");
 $tituloPagina = "Productos";
 include_once("../Estructuras/headInseguro.php");
+if ($rol !=null ){
+  include_once("../Estructuras/navSeguro.php");
+  }else{
 include_once("../Estructuras/navInseguro.php");
+  }
 ?>
 
 <!-- ________________________________________ INICIO CONTENIDO _________________________________ -->

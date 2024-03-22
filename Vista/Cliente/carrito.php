@@ -5,6 +5,8 @@ include_once("../Estructuras/headSeguro.php");
 include_once("../Estructuras/navSeguro.php");
 
 $idUsuario = $session->getIdUsuario();
+$nombreUsuario = $session->getUsNombre();
+$mailUsuario = $session->getUsMail();
 $objCompra = new AbmCompra();
 $busquedaCompra = $objCompra->buscarCarrito($idUsuario);
 
@@ -47,9 +49,9 @@ MercadoPago\SDK::initialize();
     if (count($listaCompraItem) > 0) {
       echo "<table class='table table-bordered'>";
       echo '<thead class="thead-dark"><tr><th scope="col" style="width: 80px;">IMAGEN</th><th style="width: 600px;" scope="col">NOMBRE PRODUCTO</th><th scope="col" style="width: 80px;">CANTIDAD</th><th class="text-center" scope="col" style="width: 80px;">PRECIO POR UNIDAD</th><th style="width: 100px;" scope="col">OPCIONES</th></tr></thead><tbody>';
-      // Crea un objeto de preferencia
+      
       $objPago = new merkPago();
-       /*  $preference = new MercadoPago\Preference(); */
+       
         $items = array();
         for ($i = 0; $i < count($listaCompraItem); $i++) {
           $objCompraItem = $listaCompraItem[$i];
@@ -77,16 +79,26 @@ MercadoPago\SDK::initialize();
           <td><a href="action/quitarProductoCarrito.php?idcompraitem=' . $objCompraItem->getIdCompraItem() . '" class="btn btn-danger w-100">Quitar Producto</a></td>
           </tr>';
         }
+        $asunto = 'Gracias por tu compra!';
+        $body = 'Hola <b>'.$nombreUsuario.'!</b>, Gracias por tu compra. Estamos preparando tu compra, a la brevedad te estaremos avisando del estado de la misma.<br> FERRETERIA CHANETON';
+        $url = "action/pagoCompra.php?";
+        $url .= "idusuario=" . urlencode($idUsuario); // Usar urlencode para asegurar que los valores sean válidos en la URL
+        $url .= "&body=" . urlencode($body);
+        $url .= "&asunto=" . urlencode($asunto);
+        $url .= "&email=" . urlencode($mailUsuario);
+        $url .= "&nombre=" . urlencode($nombreUsuario);
+        
+
         $arrayRedireccion = array(
-          "success" => "http://localhost/PWD/PWD-FINAL/Vista/Cliente/action/pagoCompra.php?idusuario=".$idUsuario,
-          "failure" => "http://localhost/PWD/PWD-FINAL/Vista/Cliente/action/carrito.php",
+          "success" => "http://localhost/PWD/PWD-FINAL/Vista/Cliente/action/pagoCompra.php?idusuario=".$idUsuario ,
+          "failure" => "http://localhost/PWD/PWD-FINAL/Vista/Cliente/action/carrito.php" ,
           "pending" => "http://localhost/PWD/PWD-FINAL/Vista/Cliente/action/pagoCompra.php?idusuario=".$idUsuario
         );
         $pagar = $objPago->pagar($items, $arrayRedireccion);
         
         echo '<td colspan="4" class="robotoBold text-center">Total:<b> $'.$montoAPagar.'</b></td>';
         echo '<td colspan="1"><div href="" class="checkout-btn"></div></td></tr>';
-       
+       echo '<td colspan="1"><a href='.$url.' class="btn btn-primary w-100">REALIZAR COMPRA</a></td></tr>';
         echo "</tbody></table><br><br>";
     } else {
 

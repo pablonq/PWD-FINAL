@@ -20,8 +20,8 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 $mail = new PHPMailer(true);  
-$body = 'Hola <b>'.$nombreUsuario.'!</b>, Gracias por tu compra. Ya está en camino a tu domicilio.<br> FERRETERIA CHANETON';
-$asunto = 'Tu Compra esta en camino';
+$body = $datos['body'];  //cuer
+$asunto = $datos['asunto'];
 if($enviada){
   header("Location: ../gestionarCompras.php");
   $ObjMail = new Mail();
