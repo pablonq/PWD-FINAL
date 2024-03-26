@@ -107,7 +107,7 @@
         </div>
         <div class="form-group contenedor-dato mt-3">
             <!--<label for="password">Contraseña:</label>-->
-            <input type="password" class="form-control form-control-lg" id="uspass" name="uspass" placeholder="Contraseña">
+            <input type="password" class="form-control form-control-lg" id="uspass" name="uspass" placeholder="Contraseña" autocomplete="current-password">
         </div>
         <button type="submit" id="ingresar" class="btn btn-primary btn-lg w-100 mt-3">INGRESAR</button>
         </form>
@@ -129,7 +129,7 @@
           </div>
           <div class="form-group contenedor-dato">
           <!--<label for="usnombre">Nombre de Usuario:</label>-->
-            <input type="text" class="form-control form-control-lg" id="usnombre" name="usnombre" placeholder="Nombre de Usuario" required>
+            <input type="text" class="form-control form-control-lg" id="nombre" name="nombre" placeholder="Nombre de Usuario" required>
           </div>
           <div class="form-group contenedor-dato mt-3">
           <!--<label for="usmail">Correo Electrónico:</label>-->

@@ -2,7 +2,7 @@ $(document).ready(function () {
 
     $("#formCrearCuenta").validate({
         rules: {
-            usnombre: {
+            nombre: {
                 required: true,
             },
             usmail: {
@@ -11,7 +11,7 @@ $(document).ready(function () {
             }
         },
         messages: {
-            usnombre: {
+            nombre: {
                 required: "Ingrese su usuario"
             },
             usmail: {
@@ -37,11 +37,11 @@ $(document).ready(function () {
             var alertaMensajesElem = document.getElementById('alertaMensajes');
             alertaMensajesElem.innerHTML = "";
 
-            var nombre = document.getElementById('usnombre').value;
+            var nombre = document.getElementById('nombre').value;
             var mail = document.getElementById('usmail').value;
 
             var formData = {
-                'usnombre': nombre,
+                'nombre': nombre,
                 'usmail': mail
             };
 

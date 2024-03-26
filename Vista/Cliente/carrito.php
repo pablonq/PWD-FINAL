@@ -10,13 +10,15 @@ $mailUsuario = $session->getUsMail();
 $objCompra = new AbmCompra();
 $busquedaCompra = $objCompra->buscarCarrito($idUsuario);
 
+
+
 if($busquedaCompra == null){
   
   $objAbmNuevaCompra = new AbmCompra();
   $paramCompra['idcompra'] = 0;
   $paramCompra['cofecha'] = '0000-00-00 00:00:00';
   $paramCompra['idusuario'] = $idUsuario;
-  $paramCompra['identrega'] = null;
+  
   
   $objAbmNuevaCompra->alta($paramCompra);
   $busquedaCompra = $objAbmNuevaCompra->buscarCarrito($idUsuario);
@@ -88,18 +90,20 @@ MercadoPago\SDK::initialize();
         $url .= "&email=" . urlencode($mailUsuario);
         $url .= "&nombre=" . urlencode($nombreUsuario);
         
-
+        
         $arrayRedireccion = array(
-          "success" => "http://localhost/PWD/PWD-FINAL/Vista/Cliente/action/pagoCompra.php?idusuario=".$idUsuario ,
-          "failure" => "http://localhost/PWD/PWD-FINAL/Vista/Cliente/action/carrito.php" ,
-          "pending" => "http://localhost/PWD/PWD-FINAL/Vista/Cliente/action/pagoCompra.php?idusuario=".$idUsuario
+          "success" => "http://localhost/PWD/PWD-FINAL/Vista/Cliente/action/pagoCompra.php?idusuario=".$idUsuario,
+          "failure" => "http://localhost/PWD/PWD-FINAL/Vista/Cliente/action/carrito.php" 
+          
         );
         $pagar = $objPago->pagar($items, $arrayRedireccion);
         
-        echo '<td colspan="4" class="robotoBold text-center">Total:<b> $'.$montoAPagar.'</b></td>';
+        echo '<td colspan="4" rowspan="2" class="robotoBold text-center display-4">Total:<b> $'.$montoAPagar.'</b></td>';
         echo '<td colspan="1"><div href="" class="checkout-btn"></div></td></tr>';
+        /* echo '<td colspan="4" class="robotoBold text-center"></td>'; */
        echo '<td colspan="1"><a href='.$url.' class="btn btn-primary w-100">REALIZAR COMPRA</a></td></tr>';
         echo "</tbody></table><br><br>";
+        /* header("Location: $url"); */
     } else {
 
         echo '<div class="container mt-5 mb-5">';
