@@ -55,16 +55,16 @@ require '../../vendor/autoload.php';
                         <td> <div class="textoIdCompra text-center">' . $objCompra->getIdCompra() . '</div></td>
                         <td>' . $objCompra->getCoFecha() . '</td>';
                 if ($tipoEstado == "iniciada"){
-                    echo '<td> <div class="fondoAmarillo text-center">' . "Iniciada" . '</div></td>';
+                    echo '<td class="bg-warning"> <div class="text-center">' . "Iniciada" . '</div></td>';
 
                 } else if ($tipoEstado == "aceptada"){
-                    echo '<td> <div class="fondoAzul text-center">' . "Aceptada" . '</div></td>';
+                    echo '<td class="bg-primary"> <div class="text-center">' . "Aceptada" . '</div></td>';
 
                 } else if ($tipoEstado == "enviada"){
-                    echo '<td> <div class="fondoVerde text-center">' . "Enviada" . '</div></td>';
+                    echo '<td class="bg-success"> <div class="text-center">' . "Enviada" . '</div></td>';
 
                 } else {
-                    echo '<td> <div class="fondoRojo text-center">' . "Cancelada" . '</div></td>';
+                    echo '<td class="bg-danger"> <div class="text-center">' . "Cancelada" . '</div></td>';
 
                 }
                 
@@ -114,14 +114,14 @@ require '../../vendor/autoload.php';
                       $bodyCancelar = 'Hola <b>'.$objCompra->getObjUsuario()->getUsNombre().'!</b>, Lamentablemente tu compra a sido <b>CANCELADA</b>. A la brevedad nos estaremos comunicando telefonicamente para dar explicaciones de la situaci´n de tu compra. Saludos.<br> <b>FERRETERIA CHANETON</b>';
                       $asuntoCancelar = 'Noticias sobre tu compra';
                       $urlCancelar = "action/cancelarCompra.php?";
-                      $urlCancelar .= "idcompra=" . urlencode($objCompra->getIdCompra()); // Usar urlencode para asegurar que los valores sean válidos en la URL
+                      $urlCancelar .= "idcompra=" . urlencode($objCompra->getIdCompra()); 
                       $urlCancelar .= "&body=" . urlencode($bodyCancelar);
                       $urlCancelar .= "&asunto=" . urlencode($asuntoCancelar);
 
                       $bodyEnviar = 'Hola <b>'.$objCompra->getObjUsuario()->getUsNombre().'!</b>, Gracias por tu compra. Ya está en camino a tu domicilio.<br> FERRETERIA CHANETON';
                       $asuntoEnviar = 'Tu Compra esta en camino';
                       $urlEnviar = "action/enviarCompra.php?";
-                      $urlEnviar .= "idcompra=" . urlencode($objCompra->getIdCompra()); // Usar urlencode para asegurar que los valores sean válidos en la URL
+                      $urlEnviar .= "idcompra=" . urlencode($objCompra->getIdCompra()); 
                       $urlEnviar .= "&body=" . urlencode($bodyEnviar);
                       $urlEnviar .= "&asunto=" . urlencode($asuntoEnviar);
 

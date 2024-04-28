@@ -2,8 +2,8 @@
 include_once ("../../../configuracion.php");
 require '../../../vendor/autoload.php';
 //pasa el carrito al estado iniciada
-$datos= data_submitted();//idusuario
-verEstructura($datos);
+$datos= data_submitted();
+/* verEstructura($datos); */
 $obj = new AbmCompraEstado();
 $resp = $obj->pagarCompra($datos['idusuario']);
 

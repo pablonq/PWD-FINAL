@@ -83,7 +83,7 @@ class AbmCompra{
         $param['idcompra'] = null;
 
         $obj = $this->cargarObjeto($param);
-        // verEstructura($obj);
+         /* verEstructura($obj); */
         if ($obj != null && $obj->insertar()){
             $resp = true;
         }

@@ -1,6 +1,6 @@
 <?php
 include_once("../../configuracion.php");
-$tituloPagina = "Su Carrito de Compras";
+$tituloPagina = "Carrito de Compras";
 include_once("../Estructuras/headSeguro.php");
 include_once("../Estructuras/navSeguro.php");
 
@@ -103,7 +103,7 @@ MercadoPago\SDK::initialize();
         /* echo '<td colspan="4" class="robotoBold text-center"></td>'; */
        echo '<td colspan="1"><a href='.$url.' class="btn btn-primary w-100">REALIZAR COMPRA</a></td></tr>';
         echo "</tbody></table><br><br>";
-        /* header("Location: $url"); */
+        
     } else {
 
         echo '<div class="container mt-5 mb-5">';

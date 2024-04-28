@@ -240,7 +240,7 @@ class AbmCompraEstado{
     }
 
     /**
-     * Cambia el Estado A enviada
+     * Cambia el Estado a enviada.  
      */
     public function enviarCompra($datos){
         $resp = false;
@@ -254,7 +254,7 @@ class AbmCompraEstado{
             $param['idcompraestadotipo'] = 2;
             $param['cefechafin'] = '0000-00-00 00:00:00';
             $exito = $objEstado->buscar($param);
-            verEstructura($exito);
+            /* verEstructura($exito); */
 
             if($exito){
                 //modifico el estado inicial colocandole fecha fin
