@@ -46,8 +46,8 @@ $listaUsuarios = $objAbmUsuario->buscar(null);
                     <td class="text-center">' . $objUsuario->getUsDeshabilitado() . '</td>
                     <td class="botonesGestionUsuarios text-center">
                         <a href="formActualizarUsuario.php?idusuario=' . $objUsuario->getIdUsuario() . '" class="btn btn-primary btn-sm m-1">Actualizar</a>
-                        <a href="asignarRoles.php?idusuario=' . $objUsuario->getIdUsuario() . '" class="btn btn-info btn-sm m-1">Asignar Roles</a>
-                        <a href="quitarRol.php?idusuario=' . $objUsuario->getIdUsuario() . '" class="btn btn-warning btn-sm m-1">Quitar Roles</a>
+                        <a href="asignarRoles.php?idusuario=' . $objUsuario->getIdUsuario() . '" class="btn btn-info btn-sm m-1">Asignar Rol</a>
+                        <a href="quitarRol.php?idusuario=' . $objUsuario->getIdUsuario() . '" class="btn btn-warning btn-sm m-1">Quitar Rol</a>
                         <a href="action/deshabilitarUsuario.php?idusuario=' . $objUsuario->getIdUsuario() . '" class="btn btn-danger btn-sm m-1">Eliminar</a>
                     </td>
                   </tr>';

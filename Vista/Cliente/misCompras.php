@@ -60,16 +60,16 @@ include_once("../Estructuras/navSeguro.php");
                 <td>' . $objCompra->getCoFecha() . '</td>';
                 
                 if ($tipoEstado == "iniciada"){
-                    echo '<td> <div class="fondoAmarillo text-center">' . "Iniciada" . '</div></td>';
+                    echo '<td class="bg-warning"> <div class="fondoAmarillo text-center">' . "Iniciada" . '</div></td>';
 
                 } else if ($tipoEstado == "aceptada"){
-                    echo '<td> <div class="fondoAzul text-center">' . "Aceptada" . '</div></td>';
+                    echo '<td class="bg-primary"> <div class="fondoAzul text-center">' . "Aceptada" . '</div></td>';
 
                 } else if ($tipoEstado == "enviada"){
-                    echo '<td> <div class="fondoVerde text-center">' . "Enviada" . '</div></td>';
+                    echo '<td class="bg-success"> <div class="fondoVerde text-center">' . "Enviada" . '</div></td>';
 
                 } else {
-                    echo '<td> <div class="fondoRojo text-center">' . "Cancelada" . '</div></td>';
+                    echo '<td class="bg-danger"> <div class="fondoRojo text-center">' . "Cancelada" . '</div></td>';
 
                 }
                 

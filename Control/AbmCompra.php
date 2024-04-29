@@ -113,7 +113,7 @@ class AbmCompra{
     }
     
     /**
-     * Permite modificar un objeto
+     * Permite modificar un objeto, verifica si "$param['idcompra']" ha sido enviado. Realiza la modificacion.
      * @param array $param
      * @return boolean
      */

@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
       document.getElementById("cerrarFormulario").addEventListener("click", function() {
         cerrarFormulario();
       });
-      // Tu código aquí
+      
     });
   } else {
     console.warn("El elemento con clase 'boton-cerrar-formulario' no fue encontrado.");
