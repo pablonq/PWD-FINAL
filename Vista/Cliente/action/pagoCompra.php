@@ -14,7 +14,8 @@ $body =  $datos['body'];
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
-$mail = new PHPMailer(true); 
+$mail = new PHPMailer(true);
+ 
 if($resp){
     header('Location: ../misCompras.php');
     $ObjMail = new Mail();

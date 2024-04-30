@@ -38,9 +38,9 @@ $listaCompraItem = $objCompraItem->buscar($idUCompra);
 
 //SDK de mercadopago
 require '../../vendor/autoload.php';
-
-
 MercadoPago\SDK::initialize();
+
+
 ?>
 
 

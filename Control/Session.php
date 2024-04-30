@@ -118,7 +118,7 @@ class Session {
         $rutaArchivo = $_SERVER['PHP_SELF']; //Retorna un string con la ruta absoluta del archivo donde se está abriendo
         $colDireccionesRuta = explode("/", $rutaArchivo); //Separa una sentencia por una letra o simbolo dado y retorna un array
         $direccionMenu = $colDireccionesRuta[count($colDireccionesRuta) - 1];
-        /*---test---*/
+        
         
         $menues = $this->getColMenu();
         $colMenu = [];
@@ -136,7 +136,7 @@ class Session {
 
         
       
-        /*---test---*/
+        
 
         /* $objMenuRol = new MenuRol();
         if ($objMenuRol->verificarPermiso($_SESSION["idusuario"], $direccionMenu)) {
@@ -199,9 +199,8 @@ class Session {
         return $resp;
     }
 
-    /*/=======================================================================================\*\
-    ||                                   OBSERVADORES DE SESSION                               ||
-    \*\=======================================================================================/*/
+    
+    /* ======================================================================================= */
 
     /**
      * Devuelve un entero con el ID de usuario del usuario activo o null si no existe
@@ -289,9 +288,8 @@ class Session {
         return $colRoles;
     }
 
-    /*/=======================================================================================\*\
-    ||                                   OBSERVADORES OBJETOS                                  ||
-    \*\=======================================================================================/*/
+    
+    /* ======================================================================================= */
 
     /**
      * Devuelve el objUsuario activo
@@ -344,9 +342,8 @@ class Session {
         return $colMenu;
     }
 
-    /*/=======================================================================================\*\
-    ||                                   MODIFICADORES DE SESSION                              ||
-    \*\=======================================================================================/*/
+    
+    /* ======================================================================================= */
 
     /**
      * Recibe un entero con el nuevo id de rol activo del usuario activo
