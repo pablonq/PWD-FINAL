@@ -132,7 +132,17 @@ class AbmCompraEstado{
     /**
      * Recibe el id(un numero no array) del usuario y coloca la compra en el estado Iniciada
      */
-    public function pagarCompra($idusuario){
+    public function pagarCompra($datos){
+        $idusuario = $datos['idusuario'];
+        $mailUsuario = $datos['email'];
+        $nombreUsuario = $datos['nombre'];
+        $asunto = $datos['asunto'];
+        $body =  $datos['body'];
+        use PHPMailer\PHPMailer\PHPMailer;
+        use PHPMailer\PHPMailer\SMTP;
+        use PHPMailer\PHPMailer\Exception;
+        $mail = new PHPMailer(true);
+
         $resp = false;
         $objCompra = new AbmCompra();
         $arayCompra = $objCompra->buscarCarrito($idusuario);//array

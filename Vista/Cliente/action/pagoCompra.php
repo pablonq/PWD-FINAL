@@ -5,8 +5,8 @@ require '../../../vendor/autoload.php';
 $datos= data_submitted();
 /* verEstructura($datos); */
 $obj = new AbmCompraEstado();
-$resp = $obj->pagarCompra($datos['idusuario']);
-
+$resp = $obj->pagarCompra($datos);
+/* $resp = $obj->pagarCompra($datos['idusuario']); */
 $mailUsuario = $datos['email'];
 $nombreUsuario = $datos['nombre'];
 $asunto = $datos['asunto'];
