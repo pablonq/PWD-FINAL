@@ -133,6 +133,7 @@ class AbmCompraEstado{
      * Recibe el id(un numero no array) del usuario y coloca la compra en el estado Iniciada
      */
     public function pagarCompra($datos){
+
         $idusuario = $datos['idusuario'];
         $mailUsuario = $datos['email'];
         $nombreUsuario = $datos['nombre'];
@@ -165,6 +166,10 @@ class AbmCompraEstado{
             $param['cefechafin'] = null;
             $exito = $objEstado->alta($param);
             $resp = true;
+
+            $ObjMail = new Mail();
+            $enviarMail = $ObjMail->enviarCorreo($mailUsuario, $nombreUsuario, $asunto, $body);
+
             if($exito){
                 $nuevaCompra = new AbmCompra();
                 $aux['idcompra'] = 0;

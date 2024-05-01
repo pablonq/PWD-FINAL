@@ -7,19 +7,19 @@ $datos= data_submitted();
 $obj = new AbmCompraEstado();
 $resp = $obj->pagarCompra($datos);
 /* $resp = $obj->pagarCompra($datos['idusuario']); */
-$mailUsuario = $datos['email'];
-$nombreUsuario = $datos['nombre'];
-$asunto = $datos['asunto'];
-$body =  $datos['body'];
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\SMTP;
-use PHPMailer\PHPMailer\Exception;
-$mail = new PHPMailer(true);
+// $mailUsuario = $datos['email'];
+// $nombreUsuario = $datos['nombre'];
+// $asunto = $datos['asunto'];
+// $body =  $datos['body'];
+// use PHPMailer\PHPMailer\PHPMailer;
+// use PHPMailer\PHPMailer\SMTP;
+// use PHPMailer\PHPMailer\Exception;
+// $mail = new PHPMailer(true);
  
 if($resp){
     header('Location: ../misCompras.php');
-    $ObjMail = new Mail();
-    $enviarMail = $ObjMail->enviarCorreo($mailUsuario, $nombreUsuario, $asunto, $body);
+    // $ObjMail = new Mail();
+    // $enviarMail = $ObjMail->enviarCorreo($mailUsuario, $nombreUsuario, $asunto, $body);
   
 }else{
     header('Location: ../misCompras.php');
