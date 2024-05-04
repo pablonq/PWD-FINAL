@@ -101,7 +101,7 @@ MercadoPago\SDK::initialize();
         echo '<td colspan="4" rowspan="2" class="robotoBold text-center display-4">Total:<b> $'.$montoAPagar.'</b></td>';
         echo '<td colspan="1"><div href="" class="checkout-btn"></div></td></tr>';
         /* echo '<td colspan="4" class="robotoBold text-center"></td>'; */
-       echo '<td colspan="1"><a href='.$url.' class="btn btn-primary w-100">REALIZAR COMPRA</a></td></tr>';
+        echo '<td colspan="1"><a href='.$url.' class="btn btn-primary w-100">REALIZAR COMPRA</a></td></tr>';
         echo "</tbody></table><br><br>";
         
     } else {

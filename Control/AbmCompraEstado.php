@@ -1,6 +1,6 @@
 <?php
 class AbmCompraEstado{
-
+  
      /**
      * Espera como parametro un arreglo asociativo donde las claves coinciden con los nombres de las variables instancias del objeto
      * @param array $param
@@ -139,10 +139,8 @@ class AbmCompraEstado{
         $nombreUsuario = $datos['nombre'];
         $asunto = $datos['asunto'];
         $body =  $datos['body'];
-        use PHPMailer\PHPMailer\PHPMailer;
-        use PHPMailer\PHPMailer\SMTP;
-        use PHPMailer\PHPMailer\Exception;
-        $mail = new PHPMailer(true);
+        
+        
 
         $resp = false;
         $objCompra = new AbmCompra();
@@ -197,6 +195,11 @@ class AbmCompraEstado{
         $arayCompra = $objCompra->buscar($datos);//array
         $compra = $arayCompra[0];//objCompra
 
+        $nombreUsuario = $compra->getObjUsuario()->getUsNombre();
+        $mailUsuario = $compra->getObjUsuario()->getUsMail();
+        $body = $datos['body']; 
+        $asunto = $datos['asunto'];
+
         $objEstado = new AbmCompraEstado();
         $param['idcompra'] = $compra->getIdCompra();
         $param['idcompraestadotipo'] = 1;
@@ -250,6 +253,11 @@ class AbmCompraEstado{
         
             //echo "Compra aceptada";
             $resp = true;
+            if($resp){
+              $ObjMail = new Mail();
+              $enviarMail = $ObjMail->enviarCorreo($mailUsuario, $nombreUsuario, $asunto, $body);
+
+            }
         }
         return $resp;
     }
@@ -262,6 +270,10 @@ class AbmCompraEstado{
         $objCompra = new AbmCompra();
         $arayCompra = $objCompra->buscar($datos);//array
         $compra = $arayCompra[0];//objCompra
+        $nombreUsuario = $compra->getObjUsuario()->getUsNombre();
+        $mailUsuario = $compra->getObjUsuario()->getUsMail();
+        $body = $datos['body'];  //cuer
+        $asunto = $datos['asunto'];
 
             $objEstado = new AbmCompraEstado();
             //parametros de busqueda
@@ -290,7 +302,8 @@ class AbmCompraEstado{
                 $param['cefechafin'] = null;
                 $exito = $cancelado->alta($param);
                 $resp = true;
-                
+                $ObjMail = new Mail();
+                $enviarMail = $ObjMail->enviarCorreo($mailUsuario, $nombreUsuario, $asunto, $body);
             
                 echo "Envio realizado";
             }else{
@@ -309,11 +322,19 @@ class AbmCompraEstado{
         $busqueda['idcompra'] = $datos['idcompra'];
         $busqueda['cefechafin'] = '0000-00-00 00:00:00';
         $colEstado = $objEstado->buscar($busqueda);
-        verEstructura($colEstado);
+        /* verEstructura($colEstado); */
         
+        $objCompra = new AbmCompra();
+        $arrayCompra = $objCompra->buscar($datos);
+        $compra = $arrayCompra[0];
+        $nombreUsuario = $compra->getObjUsuario()->getUsNombre();
+        $mailUsuario = $compra->getObjUsuario()->getUsMail();
+        $body = $datos['body'];
+        $asunto = $datos['asunto'];
+
         //modifico el estado inicial colocandole fecha fin
         $estado = $colEstado[0];
-        verEstructura($estado);
+        /* verEstructura($estado); */
         $param['idcompraestado'] = $estado->getIdCompraEstado();
         $param['idcompra'] = $estado->getObjCompra()->getIdCompra();
         $param['idcompraestadotipo'] = $estado->getObjCompraEstadoTipo()->getIdCompraEstadoTipo();
@@ -356,15 +377,69 @@ class AbmCompraEstado{
             $param['cefechaini'] = date('Y-m-d H:i:s');
             $param['cefechafin'] = null;
             $exito = $cancelado->alta($param);
+            
+            
+            $ObjMail = new Mail();
+            $enviarMail = $ObjMail->enviarCorreo($mailUsuario, $nombreUsuario, $asunto, $body);
             $resp = true;
+    
             
-
-
-            
+                     
         }
         //creo el estado cancelada con fecha de inicio
         return $resp;
     }
+
+
+
+    public function abonarCompra($datos){
+
+      $idusuario = $datos['idusuario'];
+      $objCompra = new AbmCompra();
+      $arayCompra = $objCompra->buscarCarrito($idusuario);//array
+      //verEstructura($arayCompra);
+      $compra = $arayCompra[0];//objCompra
+      //verEstructura($compra);
+      $idCompra = $compra->getIdCompra();
+      
+      $objCompraItem = new AbmCompraItem();
+      $objProducto = new AbmProducto();
+      
+      $listaCompraItem = $objCompraItem->buscar($idCompra);
+      
+      require '../../vendor/autoload.php';
+      MercadoPago\SDK::initialize();
+
+      $objPago = new merkPago();
+      $items = array();
+      
+      for ($i = 0; $i < count($listaCompraItem); $i++) {
+        $objCompraItem = $listaCompraItem[$i];
+        $idProducto['idproducto'] = $objCompraItem->getObjProducto()->getIdProducto();
+        $busquedaProducto = $objProducto->buscar($idProducto);
+        $producto = $busquedaProducto[0];//objProducto
+        $montoAPagar = $montoAPagar + ($producto->getProDetalle() *  $objCompraItem->getCiCantidad());
+          
+        $item = new MercadoPago\Item();
+        $item->id = $idProducto['idproducto'];
+        $item->title = $producto->getProNombre();
+        $item->quantity = $objCompraItem->getCiCantidad();
+        $item->unit_price = $producto->getProDetalle();
+        $item->currency_id = "ARS";
+        $items[] = $item;
+      }
+      $arrayRedireccion = array(
+        "success" => "http://localhost/PWD/PWD-FINAL/Vista/Cliente/action/pagoCompra.php?idusuario=".$idUsuario,
+        "failure" => "http://localhost/PWD/PWD-FINAL/Vista/Cliente/action/carrito.php" 
+        
+      );
+      
+      $pagar = $objPago->pagar($items, $arrayRedireccion);
+
+      
+      return $pagar;
+
+  }
 }
 
 ?>

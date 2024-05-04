@@ -5,7 +5,7 @@ use PHPMailer\PHPMailer\Exception;
 class Mail extends PHPMailer {
 
 public function enviarCorreo($mailUsuario, $nombreUsuario, $asunto, $body) {
-   
+        $mail = new PHPMailer(true);  
         $this->SMTPDebug = 2;                                     //Activacion salida errores
         $this->isSMTP();                                          //Enviar usando protocolo SMTP
         $this->Host       = 'smtp.gmail.com';                     //Host

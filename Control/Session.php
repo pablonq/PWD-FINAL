@@ -111,8 +111,8 @@ class Session {
      * Valida si el usuario tiene el rol (permiso) para entrar a una página
      * @return boolean
      */
-    public function tienePermiso()
-    {
+    public function tienePermiso(){
+    
         $resp = false;
 
         $rutaArchivo = $_SERVER['PHP_SELF']; //Retorna un string con la ruta absoluta del archivo donde se está abriendo
@@ -121,7 +121,7 @@ class Session {
         
         
         $menues = $this->getColMenu();
-        $colMenu = [];
+       /*  $colMenu = [];
         for ($i=0; $i < count($menues); $i++){//Consigo la colección de Menus
         $colMenu[] = $menues[$i]->getmeDescripcion();
         }
@@ -133,17 +133,15 @@ class Session {
           }
           $i++;
           } while ($i<count($colMenu));
-
+*/
         
-      
-        
-
-        /* $objMenuRol = new MenuRol();
-        if ($objMenuRol->verificarPermiso($_SESSION["idusuario"], $direccionMenu)) {
+        for ($i=0; $i < count($menues); $i++){
+          if($menues[$i]->getmeDescripcion()===$direccionMenu){
             $resp = true;
-        } */
-
-        return $resp;
+            break;
+          }
+        }
+      return $resp;
     }
 
     /**

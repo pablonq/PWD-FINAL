@@ -7,25 +7,9 @@ $datos = data_submitted();//idCompra
 $objEstado = new AbmCompraEstado();
 $enviada = $objEstado->enviarCompra($datos);
 
-$objCompra = new AbmCompra();
-$arrayCompra = $objCompra->buscar($datos);
-$compra = $arrayCompra[0];
-
-$nombreUsuario = $compra->getObjUsuario()->getUsNombre();
-$mailUsuario = $compra->getObjUsuario()->getUsMail();
-
-
-//Libreria Mailer
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\SMTP;
-use PHPMailer\PHPMailer\Exception;
-$mail = new PHPMailer(true);  
-$body = $datos['body'];  //cuer
-$asunto = $datos['asunto'];
 if($enviada){
   header("Location: ../gestionarCompras.php");
-  $ObjMail = new Mail();
-  $enviarMail = $ObjMail->enviarCorreo($mailUsuario, $nombreUsuario, $asunto, $body);
+  
 
 }else{
     header("Location: ../gestionarCompras.php");

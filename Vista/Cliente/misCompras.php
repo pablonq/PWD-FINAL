@@ -32,6 +32,7 @@ include_once("../Estructuras/navSeguro.php");
                       <th style="width: 700px;" rowspan="2">ITEMS</th>
                       <th style="width: 100px;">PRECIO TOTAL</th>
                       <th style="width: 150px;">PROGRESO</th>
+                      
                     </tr>
               </thead>';
         echo '<tbody>';
@@ -104,6 +105,7 @@ include_once("../Estructuras/navSeguro.php");
                             <td>
                                 <a href="action/cancelarCompra.php?idcompra=' . $objCompra->getIdCompra() . '" class="btn btn-danger w-100">Cancelar Compra</a>
                             </td>
+                            
                         </tr>';
                 } else if($tipoEstado == 'aceptada'){
                     echo '</td>

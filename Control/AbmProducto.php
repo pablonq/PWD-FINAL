@@ -132,7 +132,7 @@ class AbmProducto
         $param['procantstock'] = $datos['procantstock'];
         $param['tipo'] = $datos['tipo'];
         $param['imagenproducto'] = $datos['imagenproducto'];
-        verEstructura($param);
+        /* verEstructura($param); */
 
         $objProducto = new AbmProducto();
         $exito = $objProducto->alta($param);
