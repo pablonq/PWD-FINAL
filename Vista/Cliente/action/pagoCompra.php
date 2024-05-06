@@ -9,7 +9,13 @@ $resp = $obj->pagarCompra($datos);
 
  
 if($resp){
+   $respMerk = $obj->abonarCompra($datos);
+   if($respMerk) {
+    echo '<script> merkPago(' . json_encode($respMerk) . ');</script>';
+   }else{
     header('Location: ../misCompras.php');
+   }   
+
     
 }else{
     header('Location: ../misCompras.php');

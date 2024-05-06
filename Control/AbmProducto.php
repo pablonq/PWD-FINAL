@@ -142,6 +142,40 @@ class AbmProducto
         return $resp;
     }
 
+    public function agregarProductosExcel($datos){
+      $resp = false
+      // recupera el archivo
+      if(isset($_POST['send'])) {
+        // Verifica si hay un archivo seleccionado
+        if($_FILES['excel']['size']>0){
+
+            // Obtener el tipo MIME del archivo
+            $mime_type = mime_content_type($_FILES['excel']['tmp_name']);
+            
+            // Tipos MIME comunes para archivos de Excel
+            $allowed_mime_types = array(
+                'application/vnd.ms-excel', // para Excel 97-2003 (.xls)
+                'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' // para Excel 2007+ (.xlsx)
+            );
+        
+            // Verificar si el tipo MIME del archivo está en la lista de tipos permitidos
+            if(in_array($mime_type, $allowed_mime_types)) {
+             
+             $documento = IOFactory::load($datos);//cargo el archivo
+             //uso la primera hoja del excel
+             $hojaExcel = $documento->getSheet(0);
+             //obtengo la cantidad de filas que tienen datos
+             $cantFilas = $hojaExcel->getHighestDataRow();
+             
+              
+            }
+        }
+        
+        }
+
+      }
+    }
+
     /**
      * Esta función recibe un valor que representa una cantidad y un id de producto
      * y devuelve true si esa cantidad no excede el stock del producto o falso en caso contrario
