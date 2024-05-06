@@ -35,15 +35,7 @@ $objProducto = new AbmProducto();
  */
 
 $listaCompraItem = $objCompraItem->buscar($idUCompra);
-
-//SDK de mercadopago
-require '../../vendor/autoload.php';
-MercadoPago\SDK::initialize();
-
-
 ?>
-
-
 
 <div class="carrito mt-8">
   <?php
@@ -52,9 +44,7 @@ MercadoPago\SDK::initialize();
       echo "<table class='table table-bordered'>";
       echo '<thead class="thead-dark"><tr><th scope="col" style="width: 80px;">IMAGEN</th><th style="width: 600px;" scope="col">NOMBRE PRODUCTO</th><th scope="col" style="width: 80px;">CANTIDAD</th><th class="text-center" scope="col" style="width: 80px;">PRECIO POR UNIDAD</th><th style="width: 100px;" scope="col">OPCIONES</th></tr></thead><tbody>';
       
-      $objPago = new merkPago();
-       
-        $items = array();
+      
         for ($i = 0; $i < count($listaCompraItem); $i++) {
           $objCompraItem = $listaCompraItem[$i];
           $idProducto['idproducto'] = $objCompraItem->getObjProducto()->getIdProducto();
@@ -62,17 +52,7 @@ MercadoPago\SDK::initialize();
           $producto = $busquedaProducto[0];//objProducto
           $montoAPagar = $montoAPagar + ($producto->getProDetalle() *  $objCompraItem->getCiCantidad());
           
-          $item = new MercadoPago\Item();
-          $item->id = $idProducto['idproducto'];
-          $item->title = $producto->getProNombre();
-          $item->quantity = $objCompraItem->getCiCantidad();
-          $item->unit_price = $producto->getProDetalle();
-          $item->currency_id = "ARS";
-          $items[] = $item;
-          
-          
-          
-          
+                   
           echo '<tr>
           <td class="text-center"><img src=' . $producto->getImagenProducto() . ' width="50px"></td>
           <td class="h5"><b>' . $producto->getProNombre() . '</b></td>
@@ -91,12 +71,7 @@ MercadoPago\SDK::initialize();
         $url .= "&nombre=" . urlencode($nombreUsuario);
         
         
-        $arrayRedireccion = array(
-          "success" => "http://localhost/PWD/PWD-FINAL/Vista/Cliente/action/pagoCompra.php?idusuario=".$idUsuario,
-          "failure" => "http://localhost/PWD/PWD-FINAL/Vista/Cliente/action/carrito.php" 
-          
-        );
-        $pagar = $objPago->pagar($items, $arrayRedireccion);
+        
         
         echo '<td colspan="4" rowspan="2" class="robotoBold text-center display-4">Total:<b> $'.$montoAPagar.'</b></td>';
         echo '<td colspan="1"><div href="" class="checkout-btn"></div></td></tr>';
@@ -119,24 +94,7 @@ MercadoPago\SDK::initialize();
     }
     ?>
 </div>
-<script>
-  const mp = new MercadoPago('TEST-9c5026e5-50a5-40c0-9203-6a14199c474b',{
-    locale: 'es-AR',
-  });
-  
-  const checkout = mp.checkout({
-   
-   preference:{
-     id:'<?php echo $pagar; ?>'
-    },
-    
-    render: {
-      container: '.checkout-btn',
-      label: 'PAGAR'
-    }
-  })
- 
-  </script>
+
 
 <?php
 include_once("../Estructuras/footer.php");

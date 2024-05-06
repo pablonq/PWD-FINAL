@@ -1,14 +1,14 @@
 <div class="modal" id="merkPago" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-      <form name="formLogin" id="formLogin" method="POST" class="needs-validation">
+     
         <a href="#"> <img src="../img/logo.png" class="logo" alt="Logo"></a>
         <br>
         <br>
         <div class="h2">Pague su Compra con MercadoPago</div>
         <!-- Zona de alerta -->
         <div class="checkout-btn"></div>
-      </form>
+      
     </div>
   </div>
 </div>

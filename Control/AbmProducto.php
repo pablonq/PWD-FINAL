@@ -1,4 +1,6 @@
 <?php
+
+
 class AbmProducto
 {
 
@@ -143,38 +145,53 @@ class AbmProducto
     }
 
     public function agregarProductosExcel($datos){
-      $resp = false
-      // recupera el archivo
-      if(isset($_POST['send'])) {
-        // Verifica si hay un archivo seleccionado
-        if($_FILES['excel']['size']>0){
-
-            // Obtener el tipo MIME del archivo
-            $mime_type = mime_content_type($_FILES['excel']['tmp_name']);
+      $resp = false;
+      $dirDestino = '../Vista/Deposito/uploads';
+      $documentoRecibido = $_FILES['excel']['tmp_name'];
+      
+      
+      
+      if(isset($_FILES['excel']) && $_FILES['excel']['size'] > 0){
+        $nombre_archivo = $_FILES['excel']['name'];
+        $extension = pathinfo($nombre_archivo, PATHINFO_EXTENSION);
+        $extensiones_permitidas = array('xls', 'xlsx');
+        if(in_array(strtolower($extension), $extensiones_permitidas)) {
+          // El archivo tiene una extensión permitida, procede con la carga y procesamiento
+          
+          $mime_type = mime_content_type($documentoRecibido);
+          
+          $documento = PhpOffice\PhpSpreadsheet\IOFactory::load($documentoRecibido);//cargo el archivo
             
-            // Tipos MIME comunes para archivos de Excel
-            $allowed_mime_types = array(
-                'application/vnd.ms-excel', // para Excel 97-2003 (.xls)
-                'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' // para Excel 2007+ (.xlsx)
-            );
-        
-            // Verificar si el tipo MIME del archivo está en la lista de tipos permitidos
-            if(in_array($mime_type, $allowed_mime_types)) {
-             
-             $documento = IOFactory::load($datos);//cargo el archivo
-             //uso la primera hoja del excel
+          //uso la primera hoja del excel
              $hojaExcel = $documento->getSheet(0);
              //obtengo la cantidad de filas que tienen datos
              $cantFilas = $hojaExcel->getHighestDataRow();
              
-              
-            }
-        }
-        
-        }
+             
+             $objProducto = new AbmProducto();
+             
 
+             for($i=2; $i<=$cantFilas;$i++){
+               $param['idproducto'] = 0;
+               $param['pronombre'] = $hojaExcel->getCell('A'.$i)->getValue();
+               $param['prodetalle'] = $hojaExcel->getCell('B'.$i)->getValue();
+               $param['procantstock'] = $hojaExcel->getCell('C'.$i)->getValue();
+               $param['tipo'] = $hojaExcel->getCell('D'.$i)->getValue();
+               $param['imagenproducto'] = $hojaExcel->getCell('E'.$i)->getValue();
+
+               $exito  = $objProducto->alta($param);
+               if($exito){
+                $resp = true;
+                
+             }
+             }
       }
-    }
+      }
+      
+      return $resp;
+        }
+      
+    
 
     /**
      * Esta función recibe un valor que representa una cantidad y un id de producto

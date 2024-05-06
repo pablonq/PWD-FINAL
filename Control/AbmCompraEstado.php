@@ -151,7 +151,7 @@ class AbmCompraEstado{
         $fecha['idcompra'] = $compra->getIdCompra();
         $fecha['cofecha'] = date('Y-m-d H:i:s');
         $fecha['idusuario'] = $compra->getObjUsuario()->getIdUsuario();
-        verEstructura($fecha);
+        
         $compraExitosa = $objCompra->modificar($fecha);
        
 
@@ -402,17 +402,18 @@ class AbmCompraEstado{
       //verEstructura($compra);
       $idCompra = $compra->getIdCompra();
       
+      
       $objCompraItem = new AbmCompraItem();
       $objProducto = new AbmProducto();
       
       $listaCompraItem = $objCompraItem->buscar($idCompra);
       
-      require '../../vendor/autoload.php';
+      
       MercadoPago\SDK::initialize();
 
       $objPago = new merkPago();
       $items = array();
-      
+      $montoAPagar = 0;
       for ($i = 0; $i < count($listaCompraItem); $i++) {
         $objCompraItem = $listaCompraItem[$i];
         $idProducto['idproducto'] = $objCompraItem->getObjProducto()->getIdProducto();
@@ -429,8 +430,8 @@ class AbmCompraEstado{
         $items[] = $item;
       }
       $arrayRedireccion = array(
-        "success" => "http://localhost/PWD/PWD-FINAL/Vista/Cliente/action/pagoCompra.php?idusuario=".$idUsuario,
-        "failure" => "http://localhost/PWD/PWD-FINAL/Vista/Cliente/action/carrito.php" 
+        "success" => "http://localhost/PWD/PWD-FINAL/Vista/Cliente/carrito.php",
+        "failure" => "http://localhost/PWD/PWD-FINAL/Vista/Cliente/carrito.php" 
         
       );
       

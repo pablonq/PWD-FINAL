@@ -1,13 +1,15 @@
 <?php
 include_once ("../../../configuracion.php");
-//colocar en menu dinamico, no va un altaCompra.php
-//tiene que recibir el idusario y cofecha(o seteamos la fecha en 0000-00-00 00:00:00 ?)
+require '../../../vendor/autoload.php';
+use PhpSpreadsheet\IOFactory;
 $datos = data_submitted();
-//verEstructura($datos);
+/* verEstructura($datos);
+var_dump($_FILES["excel"]);
+die; */
 $objProducto = new AbmProducto();
  $exito = $objProducto->agregarProductosExcel($datos);
 if($exito){
-    header("Location: ../crearProductos.php");
+    header("Location: ../gestionarProductos.php");
 }else{
     header("Location: ../crearProductos.php");
 }

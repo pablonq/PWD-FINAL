@@ -2,11 +2,11 @@
 include_once("../../configuracion.php");
 $tituloPagina = "Crear Productos";
 include_once("../Estructuras/headSeguro.php");
-
+require '../../vendor/autoload.php';
 include_once("../Estructuras/navSeguro.php");
 ?>
 
-
+<div class="crear">
 <div class="crearProducto">
 
   <form action="action/agregarProducto.php">
@@ -34,12 +34,12 @@ include_once("../Estructuras/navSeguro.php");
 </div>
 
 <div class="cargarExcel">
-  <form action="action/importarProductos.php" method="post">
-    <label for="" class="form-label">Seleccione Archivo Excel</label>
+  <form action="action/agregarProductosExcel.php" method="post" enctype="multipart/form-data">
+    <label for="formFile" class="form-label">Seleccione Archivo Excel</label>
     <input type="file" name="excel" id="excel" class="form-control">
-    <button type="button" class="btn btn-primary mt-5" name="send" enctype="multipart/form-data">Importar Productos</button>
+    <button type="submit" class="btn btn-primary mt-5">Importar Productos</button>
   </form>
-
+</div>
 </div>
 <?php
 include_once("../Estructuras/footer.php");
