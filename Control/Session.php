@@ -119,30 +119,21 @@ class Session {
         $colDireccionesRuta = explode("/", $rutaArchivo); //Separa una sentencia por una letra o simbolo dado y retorna un array
         $direccionMenu = $colDireccionesRuta[count($colDireccionesRuta) - 1];
         
-        
         $menues = $this->getColMenu();
-       /*  $colMenu = [];
-        for ($i=0; $i < count($menues); $i++){//Consigo la colección de Menus
-        $colMenu[] = $menues[$i]->getmeDescripcion();
+        $i = 0;
+    while ($i < count($menues)) {
+        if ($menues[$i]->getmeDescripcion() === $direccionMenu) {
+          $resp = true;
+            return $resp; 
         }
-        $i=0;
-        do{
-          if($colMenu[$i]===$direccionMenu){
-            $resp=true;
-            break;
-          }
-          $i++;
-          } while ($i<count($colMenu));
-*/
-        
-        for ($i=0; $i < count($menues); $i++){
-          if($menues[$i]->getmeDescripcion()===$direccionMenu){
-            $resp = true;
-            break;
-          }
-        }
-      return $resp;
+        $i++;
     }
+
+    return $resp; 
+}
+       
+        
+    
 
     /**
      * Redirecciona al usuario hacia la página principal.

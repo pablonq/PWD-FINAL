@@ -467,7 +467,11 @@ form .h2{
 }
 .cargarExcel {
   margin-left: 100px;
-  margin-top: 200px;
+  margin-top: 100px;
+}
+.cargarExcel form{
+  margin-left: 100px;
+  height: 300px;
 }
 .crear .crearProducto form{
   background-image: linear-gradient(to bottom, #0a4275,#0b2241); 

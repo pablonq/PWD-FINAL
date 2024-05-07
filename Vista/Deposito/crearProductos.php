@@ -34,7 +34,9 @@ include_once("../Estructuras/navSeguro.php");
 </div>
 
 <div class="cargarExcel">
+
   <form action="action/agregarProductosExcel.php" method="post" enctype="multipart/form-data">
+    <h4 class="mb-2 mt-2 text-center">Cargar Productos</h4>
     <label for="formFile" class="form-label">Seleccione Archivo Excel</label>
     <input type="file" name="excel" id="excel" class="form-control">
     <button type="submit" class="btn btn-primary mt-5">Importar Productos</button>

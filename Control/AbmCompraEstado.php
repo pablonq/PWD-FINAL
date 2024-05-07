@@ -167,7 +167,6 @@ class AbmCompraEstado{
 
             $ObjMail = new Mail();
             $enviarMail = $ObjMail->enviarCorreo($mailUsuario, $nombreUsuario, $asunto, $body);
-
             if($exito){
                 $nuevaCompra = new AbmCompra();
                 $aux['idcompra'] = 0;
@@ -430,10 +429,11 @@ class AbmCompraEstado{
         $items[] = $item;
       }
       $arrayRedireccion = array(
-        "success" => "http://localhost/PWD/PWD-FINAL/Vista/Cliente/carrito.php",
+        "success" => "http://localhost/PWD/PWD-FINAL/Vista/Cliente/misCompras.php",
         "failure" => "http://localhost/PWD/PWD-FINAL/Vista/Cliente/carrito.php" 
         
       );
+      
       
       $pagar = $objPago->pagar($items, $arrayRedireccion);
 
